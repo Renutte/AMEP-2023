@@ -1,3 +1,10 @@
+import java.util.ArrayList;
+import java.util.List;
+
 public class Categoria {
-    public String nom;
+    private String nom_categoria;
+
+    public Categoria(String nom_categoria) {
+        this.nom_categoria = nom_categoria;
+    }
 }
