@@ -1,7 +1,7 @@
 import java.util.ArrayList;
 import java.util.List;
 public class Pregunta {
-    private static int idContador = 0;
+    /*private static int idContador = 0;*/
     private static int ordinalContador = 0;
     private int id;
 
@@ -11,8 +11,9 @@ public class Pregunta {
     private List<Resposta> listResposta;
     private List<Categoria> listCategoria;
 
-    public Pregunta(String descripcio, String textPregunta) {
-        this.id = idContador++;
+    public Pregunta(int idPregunta, String descripcio, String textPregunta) {
+        /*this.id = idContador++;*/
+        this.id = idPregunta;
         this.descripcio = descripcio;
         this.textPregunta = textPregunta;
         this.aparicions = 0;

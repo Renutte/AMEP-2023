@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <form xmlns="http://www.intellij.com/uidesigner/form/" version="1" bind-to-class="MainWindow">
-  <grid id="27dc6" binding="panel1" default-binding="true" layout-manager="FlowLayout" hgap="5" vgap="5" flow-align="1">
+  <grid id="27dc6" binding="panel1" default-binding="true" layout-manager="GridLayoutManager" row-count="5" column-count="2" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
+    <margin top="0" left="0" bottom="0" right="0"/>
     <constraints>
       <xy x="20" y="20" width="500" height="400"/>
     </constraints>
@@ -8,9 +9,51 @@
     <border type="none"/>
     <children>
       <component id="27b54" class="javax.swing.JLabel" binding="title">
-        <constraints/>
+        <constraints>
+          <grid row="0" column="0" row-span="5" col-span="1" vsize-policy="3" hsize-policy="3" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
+        </constraints>
         <properties>
-          <text value="MainWindow"/>
+          <text value="Menu"/>
+        </properties>
+      </component>
+      <component id="cb64b" class="javax.swing.JButton" binding="buttonIntroduirPregunta">
+        <constraints>
+          <grid row="0" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
+        </constraints>
+        <properties>
+          <text value="Introduir Pregunta"/>
+        </properties>
+      </component>
+      <component id="965c3" class="javax.swing.JButton" binding="buttonAvaluarseTest">
+        <constraints>
+          <grid row="3" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
+        </constraints>
+        <properties>
+          <text value="Avaluarse Test"/>
+        </properties>
+      </component>
+      <component id="f1425" class="javax.swing.JButton" binding="buttonConstruirTest">
+        <constraints>
+          <grid row="1" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
+        </constraints>
+        <properties>
+          <text value="Construir Test"/>
+        </properties>
+      </component>
+      <component id="a05da" class="javax.swing.JButton" binding="buttonDonarPermisTest">
+        <constraints>
+          <grid row="2" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
+        </constraints>
+        <properties>
+          <text value="Donar Permis Test"/>
+        </properties>
+      </component>
+      <component id="a009" class="javax.swing.JButton" binding="buttonNouCurs">
+        <constraints>
+          <grid row="4" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
+        </constraints>
+        <properties>
+          <text value="Nou Curs"/>
         </properties>
       </component>
     </children>
