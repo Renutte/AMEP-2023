@@ -1,3 +1,4 @@
+import javax.swing.*;
 import javax.swing.plaf.synth.Region;
 import java.util.ArrayList;
 import java.util.List;
@@ -27,8 +28,17 @@ public class K {
         // 1.1 Find
         nivellEducatiuActiu = findNivellEducatiu(idNivell);
         // 1.2
+<<<<<<< HEAD
         nivellEducatiuActiu.introduirPregunta(idPregunta, descripcio, text_pregunta);
         System.out.println("Introduir Pregunta: " + idPregunta + " -- " + descripcio + " -- " + text_pregunta + " -- " + idNivell);
+=======
+        n.introduirPregunta(idPregunta, descripcio, text_pregunta);
+
+        // 2
+
+        //Categoria c = findCategoria(nom_categoria);
+
+>>>>>>> 910ce7faad8c29bca846cf3373c530d356e8ccb7
     }
     public void afegirCategoria(String idCategoria){
         Categoria c = findCategoria(idCategoria);
@@ -42,6 +52,7 @@ public class K {
     }
 
 
+<<<<<<< HEAD
     // ========== Construir Test
 
     public void construirTest(int idNivell, int idProfessor){
@@ -53,6 +64,13 @@ public class K {
 
     public void afegirPregunta(int idPregunta){
 
+=======
+    private void afegirCategoria(String nom_categoria){
+        afegirCategoria frame = new afegirCategoria();
+        frame.setSize(500, 500);
+        frame.setVisible(true);
+    }
+>>>>>>> 910ce7faad8c29bca846cf3373c530d356e8ccb7
 
     }
     // ==========

@@ -2,7 +2,7 @@ import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-public class MainWindow extends JFrame {
+public class MainWindow extends JDialog {
     private JPanel panel1;
     private JLabel title;
     private JButton buttonIntroduirPregunta;
@@ -11,15 +11,50 @@ public class MainWindow extends JFrame {
     private JButton buttonAvaluarseTest;
     private JButton buttonNouCurs;
 
-    public MainWindow(K k){
+    private String buttonPressed = "";
+
+    public MainWindow(){
         setContentPane(panel1);
+        setModal(true);
         buttonIntroduirPregunta.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                JFrame frame = new IntroduirPregunta(k);
-                frame.setSize(500, 500);
-                frame.setVisible(true);
+                buttonPressed = "buttonIntroduirPregunta";
+                dispose();
             }
         });
+        buttonConstruirTest.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                buttonPressed = "buttonConstruirTest";
+                dispose();
+            }
+        });
+        buttonDonarPermisTest.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                buttonPressed = "buttonDonarPermisTest";
+                dispose();
+            }
+        });
+        buttonAvaluarseTest.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                buttonPressed = "buttonAvaluarseTest";
+                dispose();
+            }
+        });
+        buttonNouCurs.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                buttonPressed = "buttonNouCurs";
+                dispose();
+            }
+        });
+
+    }
+
+    public String getButtonPressed(){
+        return buttonPressed;
     }
 }
