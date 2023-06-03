@@ -46,7 +46,7 @@ public class K {
         Categoria c = findCategoria(idCategoria);
         nivellEducatiuActiu.afegirCategoria(c);
     }
-    public void introduirResposta(String text_resposta, Boolean correcta, int ordinal){
+    public void introduirResposta(String text_resposta, Boolean correcta){
         nivellEducatiuActiu.introduirResposta(text_resposta,correcta);
     }
     public void fiIntroduirPregunta(){
@@ -61,12 +61,6 @@ public class K {
         nivellEducatiuActiu = findNivellEducatiu(idNivell);
 
         p.construirTest(nivellEducatiuActiu);
-    }
-
-    public void afegirPregunta(int idPregunta){
-        nivellEducatiuActiu.
-
-
     }
 
     public void fiConstruirTest(){

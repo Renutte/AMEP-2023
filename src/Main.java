@@ -5,11 +5,8 @@ import java.util.List;
 // Press Shift twice to open the Search Everywhere dialog and type `show whitespaces`,
 // then press Enter. You can now see whitespace characters in your code.
 public class Main {
+    public static K k = new K();
     public static void main(String[] args) {
-<<<<<<< HEAD
-
-
-=======
         SwingUtilities.invokeLater(new Runnable() {
             @Override
             public void run() {
@@ -39,21 +36,36 @@ public class Main {
                         }
                     }
                     // IR
-                    /*String ac_buttonPressed = "buttonConfirm";
-                    boolean introduidaUna = false;
-                    while (ac_buttonPressed == "buttonConfirm" || introduidaUna == false){
-                        afegirCategoria ac = AfegirCategoria();
-                        ac_buttonPressed = ac.buttonPressed;
-                        String nom_categoria = ac.inputNomCategoria.getText();
-                        if (ac_buttonPressed == "buttonConfirm" && !nom_categoria.equals("") && k.findCategoria(nom_categoria) != null){
-                            k.afegirCategoria(nom_categoria);
-                            introduidaUna = true;
+                    String ir_buttonPressed = "buttonConfirm";
+                    boolean introduidaCorrecta = false;
+                    while (ir_buttonPressed == "buttonConfirm"){
+                        IntroduirResposta ir = IntroduirResposta();
+                        ir_buttonPressed = ir.buttonPressed;
+                        // No permet introduir mes d'una correcta
+                        if (!(introduidaCorrecta == true && ir.inputCorrecta.isSelected())){
+                            if (ir_buttonPressed == "buttonConfirm"){
+                                k.introduirResposta(ir.inputText_Resposta.getText(), ir.inputCorrecta.isSelected());
+                                introduidaCorrecta = true;
+                            }else{
+                                if (introduidaCorrecta == false) ir_buttonPressed = "buttonConfirm";
+                            }
+                            if (ir.inputCorrecta.isSelected()) {
+                                introduidaCorrecta = true;
+                            }
                         }
-                    }*/
-
-                    //System.out.println("Introduir Pregunta: " + idPregunta + " -- " + descripcio + " -- " + text_pregunta + " -- " + idNivell);
+                    }
+                    // FIP
+                    k.fiIntroduirPregunta();
                 }
 
+            }
+
+
+            public IntroduirResposta IntroduirResposta(){
+                IntroduirResposta frame = new IntroduirResposta();
+                frame.setSize(500, 500);
+                frame.setVisible(true);
+                return frame;
             }
 
             public afegirCategoria AfegirCategoria(){
@@ -78,6 +90,5 @@ public class Main {
             }
 
         });
->>>>>>> df3a29f79923c8b914a28b0aac268b06b15e4a98
     }
 }
