@@ -30,6 +30,8 @@ public class K {
         // 1.2
         n.introduirPregunta(idPregunta, descripcio, text_pregunta);
         //
+        Categoria c = findCategoria(nom_categoria);
+
         System.out.println("Introduir Pregunta: " + idPregunta + " -- " + descripcio + " -- " + text_pregunta + " -- " + idNivell);
     }
 
@@ -43,6 +45,14 @@ public class K {
             if (n.getId() == idNivell) return n;
         }
         System.out.println("No s'ha trobat el nivell");
+        return null;
+    }
+
+    private Categoria findCategoria(String nom_categoria){
+        for (Categoria c : listCategoria) {
+            if (c.getId() == nom_categoria) return c;
+        }
+        System.out.println("No s'ha trobat la Categoria");
         return null;
     }
 
