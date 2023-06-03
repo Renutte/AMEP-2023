@@ -47,6 +47,10 @@ public class NivellEducatiu {
         testActiu.addPregunta(pregunta);
         pregunta.augmentarAparicions();
     }
+
+    public void fiConstruirTest(){
+        testActiu = null;
+    }
     private Pregunta findPregunta(int idPregunta){
         for (Pregunta p : listPregunta) {
             if (p.getId() == idPregunta) return p;
