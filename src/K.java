@@ -1,3 +1,4 @@
+import javax.swing.*;
 import javax.swing.plaf.synth.Region;
 import java.util.ArrayList;
 import java.util.List;
@@ -29,14 +30,19 @@ public class K {
         NivellEducatiu n = findNivellEducatiu(idNivell);
         // 1.2
         n.introduirPregunta(idPregunta, descripcio, text_pregunta);
-        //
-        Categoria c = findCategoria(nom_categoria);
 
-        System.out.println("Introduir Pregunta: " + idPregunta + " -- " + descripcio + " -- " + text_pregunta + " -- " + idNivell);
+        // 2
+
+        //Categoria c = findCategoria(nom_categoria);
+
     }
 
 
-
+    private void afegirCategoria(String nom_categoria){
+        afegirCategoria frame = new afegirCategoria();
+        frame.setSize(500, 500);
+        frame.setVisible(true);
+    }
 
     // ==========
 
