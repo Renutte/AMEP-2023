@@ -19,4 +19,10 @@ public class Professor {
         listTest.add(test);
         nivellEducatiu.addTest(test);
     }
+
+    public void PrintInfo(){
+        System.out.println(" === INFO Professor === ");
+        System.out.println(this.id);
+        for (Test aux : this.listTest) aux.PrintInfo();
+    }
 }

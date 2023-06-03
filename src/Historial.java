@@ -16,4 +16,13 @@ public class Historial {
         this.mitjana = 0;
         this.nivellEducatiu = nivellEducatiu;
     }
+
+    public void PrintInfo(){
+        System.out.println(" === INFO Historial === ");
+        System.out.println(this.id);
+        System.out.println(this.quantsHistorics);
+        System.out.println(this.quantsNoHistorics);
+        System.out.println(this.mitjana);
+        //nivellEducatiu.PrintInfo();
+    }
 }

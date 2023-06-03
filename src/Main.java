@@ -56,6 +56,7 @@ public class Main {
                     }
                     // FIP
                     k.fiIntroduirPregunta();
+                    k.PrintInfo();
                 }
 
             }

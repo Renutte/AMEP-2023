@@ -23,4 +23,14 @@ public class Test {
     public void addPregunta(Pregunta pregunta){
         this.listPregunta.add(pregunta);
     }
+
+    public void PrintInfo(){
+        System.out.println(" === INFO Test === ");
+        System.out.println(this.id);
+        System.out.println(this.resolucions);
+        System.out.println(this.historic);
+        //this.professor.PrintInfo();
+        //this.nivellEducatiu.PrintInfo();
+        for (Pregunta aux : this.listPregunta) aux.PrintInfo();
+    }
 }

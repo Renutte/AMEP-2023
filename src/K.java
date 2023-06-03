@@ -99,5 +99,13 @@ public class K {
         return null;
     }
 
+    public void PrintInfo(){
+        System.out.println(" === INFO K === ");
+        for (Categoria aux : this.listCategoria) aux.PrintInfo();
+        for (Estudiant aux : this.listEstudiant) aux.PrintInfo();
+        for (Grup aux : this.listGrup) aux.PrintInfo();
+        for (Professor aux : this.listProfessor) aux.PrintInfo();
+        for (NivellEducatiu aux : this.listNivellEducatiu) aux.PrintInfo();
+    }
 
 }

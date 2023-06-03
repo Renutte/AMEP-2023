@@ -20,6 +20,17 @@ public class Avaluacio {
         this.listProposta = new ArrayList<>();
     }
 
-
+    public void PrintInfo(){
+        System.out.println(" === INFO Avaluacio === ");
+        System.out.println(this.id);
+        System.out.println(this.nota);
+        System.out.println(this.respostesCorrectes);
+        System.out.println(this.respostesIncorrectes);
+        System.out.println(this.respostesEnBlanc);
+        //this.test.PrintInfo();
+        for (Proposta aux : this.listProposta) {
+            aux.PrintInfo();
+        }
+    }
 
 }

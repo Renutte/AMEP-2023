@@ -41,10 +41,22 @@ public class Pregunta {
 
     public void createResposta(String text_resposta, Boolean correcta){
         Resposta resposta = new Resposta(text_resposta, correcta,contadorOrdinal++,this);
+        this.listResposta.add(resposta);
     }
 
     public int getId(){
         return this.id;
+    }
+
+
+    public void PrintInfo(){
+        System.out.println(" === INFO Pregunta === ");
+        System.out.println(this.id);
+        System.out.println(this.descripcio);
+        System.out.println(this.textPregunta);
+        System.out.println(this.aparicions);
+        for (Categoria aux : this.listCategoria) aux.PrintInfo();
+        for (Resposta aux : this.listResposta) aux.PrintInfo();
     }
 
     /*    List<Resposta> respostes;

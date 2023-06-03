@@ -60,4 +60,10 @@ public class NivellEducatiu {
     }
 
 
+    public void PrintInfo(){
+        System.out.println(" === INFO NivellEducatiu === ");
+        System.out.println(this.id);
+        for (Pregunta aux : this.listPregunta) aux.PrintInfo();
+        for (Test aux : this.listTest) aux.PrintInfo();
+    }
 }

@@ -14,4 +14,12 @@ public class Estudiant {
         this.listAvaluacio = new ArrayList<>();
         this.listTest = new ArrayList<>();
     }
+
+    public void PrintInfo(){
+        System.out.println(" === INFO Estudiant === ");
+        System.out.println(this.id);
+        for (Historial aux : this.listHistorial) aux.PrintInfo();
+        for (Avaluacio aux : this.listAvaluacio) aux.PrintInfo();
+        for (Test aux : this.listTest) aux.PrintInfo();
+    }
 }

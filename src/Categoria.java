@@ -12,5 +12,8 @@ public class Categoria {
         return this.nom_categoria;
     }
 
-
+    public void PrintInfo(){
+        System.out.println(" === INFO Categoria === ");
+        System.out.println(this.nom_categoria);
+    }
 }

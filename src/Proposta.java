@@ -14,4 +14,12 @@ public class Proposta {
         this.pregunta = pregunta;
         this.avaluacio = avaluacio;
     }
+
+    public void PrintInfo(){
+        System.out.println(" === INFO Proposta === ");
+        System.out.println(this.id);
+        //this.resposta.PrintInfo();
+        //this.pregunta.PrintInfo();
+        //this.avaluacio.PrintInfo();
+    }
 }

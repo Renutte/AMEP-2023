@@ -19,4 +19,15 @@ public class Resposta {
         this.pregunta = pregunta;
         this.listProposta = new ArrayList<>();
     }
+
+
+    public void PrintInfo(){
+        System.out.println(" === INFO Resposta === ");
+        System.out.println(this.id);
+        System.out.println(this.text_resposta);
+        System.out.println(this.correcta);
+        System.out.println(this.ordinal);
+        //this.pregunta.PrintInfo();
+        for (Proposta aux : this.listProposta) aux.PrintInfo();
+    }
 }

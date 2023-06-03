@@ -14,4 +14,12 @@ public class Grup {
         this.classe = classe;
         this.listTest = new ArrayList<>();
     }
+
+    public void PrintInfo(){
+        System.out.println(" === INFO Grup === ");
+        System.out.println(this.id);
+        System.out.println(this.curs);
+        System.out.println(this.classe);
+        for (Test aux : this.listTest) aux.PrintInfo();
+    }
 }
