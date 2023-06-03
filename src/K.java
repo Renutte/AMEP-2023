@@ -40,7 +40,7 @@ public class K {
         nivellEducatiuActiu = findNivellEducatiu(idNivell);
         // 1.2
         nivellEducatiuActiu.introduirPregunta(idPregunta, descripcio, text_pregunta);
-        System.out.println("Introduir Pregunta: " + idPregunta + " -- " + descripcio + " -- " + text_pregunta + " -- " + idNivell);
+        /*System.out.println("Introduir Pregunta: " + idPregunta + " -- " + descripcio + " -- " + text_pregunta + " -- " + idNivell);*/
     }
     public void afegirCategoria(String idCategoria){
         Categoria c = findCategoria(idCategoria);
