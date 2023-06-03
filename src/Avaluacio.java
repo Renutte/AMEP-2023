@@ -20,4 +20,6 @@ public class Avaluacio {
         this.listProposta = new ArrayList<>();
     }
 
+
+
 }
