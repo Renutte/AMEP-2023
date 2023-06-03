@@ -21,6 +21,14 @@ public class Pregunta {
         this.listCategoria = new ArrayList<>();
     }
 
+
+    public void addCategoria(Categoria categoria){
+        this.listCategoria.add(categoria);
+    }
+
+    public void addResposta(Resposta resposta){
+        this.listResposta.add(resposta);
+    }
     private void introduirResposta(){
         // Crear respuesta
         ordinalContador++;
