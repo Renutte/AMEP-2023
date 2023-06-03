@@ -10,4 +10,11 @@ public class Professor {
         this.id = idContador++;
         this.listTest = new ArrayList<>();
     }
+
+    public int getId(){
+        return this.id;
+    }
+    public void construirTest(NivellEducatiu nivellEducatiu){
+        Test test = new Test(this,nivellEducatiu);
+    }
 }

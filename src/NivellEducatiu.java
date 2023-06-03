@@ -6,6 +6,7 @@ public class NivellEducatiu {
 
     private List<Pregunta> listPregunta;
     private List<Test> listTest;
+    Pregunta preguntaActiva;
 
     public NivellEducatiu() {
         this.id = idContador++;
@@ -19,13 +20,17 @@ public class NivellEducatiu {
 
     public void introduirPregunta(int idPregunta, String descripcio, String text_pregunta){
         //1.2.1
-        Pregunta p = createPregunta(idPregunta, descripcio, text_pregunta);
-        // 1.2.2
-        listPregunta.add(p);
+        preguntaActiva = new Pregunta(idPregunta, descripcio, text_pregunta);
     }
-
-    public Pregunta createPregunta(int idPregunta, String descripcio, String text_pregunta){
-        // 1.2.1.1 i 1.2.1.2
-        return new Pregunta(idPregunta, descripcio, text_pregunta);
+    public void afegirCategoria(Categoria nom_categoria){
+        preguntaActiva.addCategoria(nom_categoria);
+    }
+    public void introduirResposta(String text_resposta, Boolean correcta, int ordinal){
+        Resposta resposta = new Resposta(text_resposta, correcta, ordinal, preguntaActiva);
+        preguntaActiva.addResposta(resposta);
+    }
+    public void fiIntroduirPregunta(){
+        listPregunta.add(preguntaActiva);
+        preguntaActiva = null;
     }
 }

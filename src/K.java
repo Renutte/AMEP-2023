@@ -9,35 +9,52 @@ public class K {
     private List<Categoria> listCategoria;
     private List<Estudiant> listEstudiant;
 
+    NivellEducatiu nivellEducatiuActiu;
+
     public K() {
         this.listNivellEducatiu = new ArrayList<>();
         this.listProfessor = new ArrayList<>();
         this.listGrup = new ArrayList<>();
         this.listCategoria = new ArrayList<>();
         this.listEstudiant = new ArrayList<>();
-        feedLists();
+    }
+    public void afegirNivellEducatiu(NivellEducatiu nivellEducatiu) {
+        listNivellEducatiu.add(nivellEducatiu);
     }
 
-    private void feedLists() {
-        NivellEducatiu n = new NivellEducatiu();
-        listNivellEducatiu.add(n);
-    }
-
-    // ========== Esdeveniments del sistema
+    // ========== Introduir Pregunta
     public void introduirPregunta(int idPregunta, String descripcio, String text_pregunta, int idNivell){
         // 1.1 Find
-        NivellEducatiu n = findNivellEducatiu(idNivell);
+        nivellEducatiuActiu = findNivellEducatiu(idNivell);
         // 1.2
-        n.introduirPregunta(idPregunta, descripcio, text_pregunta);
-        //
-        Categoria c = findCategoria(nom_categoria);
-
+        nivellEducatiuActiu.introduirPregunta(idPregunta, descripcio, text_pregunta);
         System.out.println("Introduir Pregunta: " + idPregunta + " -- " + descripcio + " -- " + text_pregunta + " -- " + idNivell);
+    }
+    public void afegirCategoria(String idCategoria){
+        Categoria c = findCategoria(idCategoria);
+        nivellEducatiuActiu.afegirCategoria(c);
+    }
+    public void introduirResposta(String text_resposta, Boolean correcta, int ordinal){
+        nivellEducatiuActiu.introduirResposta(text_resposta,correcta,ordinal);
+    }
+    public void fiIntroduirPregunta(){
+        nivellEducatiuActiu = null;
     }
 
 
+    // ========== Construir Test
+
+    public void construirTest(int idNivell, int idProfessor){
+        Professor p = findProfessor(idProfessor);
+        nivellEducatiuActiu = findNivellEducatiu(idNivell);
+
+        p.construirTest(nivellEducatiuActiu);
+    }
+
+    public void afegirPregunta(int idPregunta){
 
 
+    }
     // ==========
 
     private NivellEducatiu findNivellEducatiu(int idNivell){
@@ -56,6 +73,13 @@ public class K {
         return null;
     }
 
-/*    List<Categoria> categories = new ArrayList<>();
-    List<NivellEducatiu> nivellsEducatius = new ArrayList<>();*/
+    private Professor findProfessor(int idProfessor){
+        for (Professor p : listProfessor) {
+            if (p.getId() == idProfessor) return p;
+        }
+        System.out.println("No s'ha trobat el Professor");
+        return null;
+    }
+
+
 }
