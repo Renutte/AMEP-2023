@@ -16,5 +16,7 @@ public class Professor {
     }
     public void construirTest(NivellEducatiu nivellEducatiu){
         Test test = new Test(this,nivellEducatiu);
+        listTest.add(test);
+        nivellEducatiu.addTest(test);
     }
 }

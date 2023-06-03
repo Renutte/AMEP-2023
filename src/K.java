@@ -35,7 +35,7 @@ public class K {
         nivellEducatiuActiu.afegirCategoria(c);
     }
     public void introduirResposta(String text_resposta, Boolean correcta, int ordinal){
-        nivellEducatiuActiu.introduirResposta(text_resposta,correcta,ordinal);
+        nivellEducatiuActiu.introduirResposta(text_resposta,correcta);
     }
     public void fiIntroduirPregunta(){
         nivellEducatiuActiu.fiIntroduirPregunta();
@@ -52,7 +52,12 @@ public class K {
     }
 
     public void afegirPregunta(int idPregunta){
+        nivellEducatiuActiu.
 
+
+    }
+
+    public void fiConstruirTest(){
 
     }
     // ==========
@@ -65,7 +70,7 @@ public class K {
         return null;
     }
 
-    private Categoria findCategoria(String nom_categoria){
+    public Categoria findCategoria(String nom_categoria){
         for (Categoria c : listCategoria) {
             if (c.getId() == nom_categoria) return c;
         }

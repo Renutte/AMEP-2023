@@ -11,6 +11,8 @@ public class Pregunta {
     private List<Resposta> listResposta;
     private List<Categoria> listCategoria;
 
+    private int contadorOrdinal;
+
     public Pregunta(int idPregunta, String descripcio, String textPregunta) {
         /*this.id = idContador++;*/
         this.id = idPregunta;
@@ -19,9 +21,8 @@ public class Pregunta {
         this.aparicions = 0;
         this.listResposta = new ArrayList<>();
         this.listCategoria = new ArrayList<>();
+        this.contadorOrdinal = 0;
     }
-
-
     public void addCategoria(Categoria categoria){
         this.listCategoria.add(categoria);
     }
@@ -32,6 +33,14 @@ public class Pregunta {
     private void introduirResposta(){
         // Crear respuesta
         ordinalContador++;
+    }
+
+    public void createResposta(String text_resposta, Boolean correcta){
+        Resposta resposta = new Resposta(text_resposta, correcta,contadorOrdinal++,this);
+    }
+
+    public int getId(){
+        return this.id;
     }
 
     /*    List<Resposta> respostes;

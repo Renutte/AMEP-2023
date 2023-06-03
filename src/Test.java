@@ -19,4 +19,9 @@ public class Test {
         this.nivellEducatiu = nivellEducatiu;
         this.listPregunta = new ArrayList<>();
     }
+
+    public void addPregunta(Pregunta pregunta){
+        this.listPregunta.add(pregunta);
+
+    }
 }
