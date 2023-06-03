@@ -30,7 +30,7 @@ public class K {
         // 1.2
         n.introduirPregunta(idPregunta, descripcio, text_pregunta);
         //
-        System.out.println("Introduir Pregunta");
+        System.out.println("Introduir Pregunta: " + idPregunta + " -- " + descripcio + " -- " + text_pregunta + " -- " + idNivell);
     }
 
 
@@ -42,6 +42,7 @@ public class K {
         for (NivellEducatiu n : listNivellEducatiu) {
             if (n.getId() == idNivell) return n;
         }
+        System.out.println("No s'ha trobat el nivell");
         return null;
     }
 
