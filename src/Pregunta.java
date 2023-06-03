@@ -35,6 +35,10 @@ public class Pregunta {
         ordinalContador++;
     }
 
+    public void augmentarAparicions(){
+        this.aparicions = this.aparicions +1;
+    }
+
     public void createResposta(String text_resposta, Boolean correcta){
         Resposta resposta = new Resposta(text_resposta, correcta,contadorOrdinal++,this);
     }

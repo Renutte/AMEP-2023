@@ -42,11 +42,11 @@ public class NivellEducatiu {
         testActiu = test;
     }
 
-    public void afegirPregunta(Pregunta pregunta, Test test){
-        //test.
-
+    public void afegirPregunta(int idPregunta){
+        Pregunta pregunta = findPregunta(idPregunta);
+        testActiu.addPregunta(pregunta);
+        pregunta.augmentarAparicions();
     }
-
     private Pregunta findPregunta(int idPregunta){
         for (Pregunta p : listPregunta) {
             if (p.getId() == idPregunta) return p;

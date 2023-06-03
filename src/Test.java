@@ -22,6 +22,5 @@ public class Test {
 
     public void addPregunta(Pregunta pregunta){
         this.listPregunta.add(pregunta);
-
     }
 }

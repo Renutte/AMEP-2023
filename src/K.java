@@ -59,14 +59,12 @@ public class K {
     public void construirTest(int idNivell, int idProfessor){
         Professor p = findProfessor(idProfessor);
         nivellEducatiuActiu = findNivellEducatiu(idNivell);
-
+        
         p.construirTest(nivellEducatiuActiu);
     }
 
     public void afegirPregunta(int idPregunta){
-        nivellEducatiuActiu.
-
-
+        nivellEducatiuActiu.afegirPregunta(idPregunta);
     }
 
     public void fiConstruirTest(){
