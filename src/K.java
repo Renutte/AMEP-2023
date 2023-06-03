@@ -38,7 +38,7 @@ public class K {
         nivellEducatiuActiu.introduirResposta(text_resposta,correcta,ordinal);
     }
     public void fiIntroduirPregunta(){
-        nivellEducatiuActiu = null;
+        nivellEducatiuActiu.fiIntroduirPregunta();
     }
 
 

@@ -21,6 +21,7 @@ public class NivellEducatiu {
     public void introduirPregunta(int idPregunta, String descripcio, String text_pregunta){
         //1.2.1
         preguntaActiva = new Pregunta(idPregunta, descripcio, text_pregunta);
+        listPregunta.add(preguntaActiva);
     }
     public void afegirCategoria(Categoria nom_categoria){
         preguntaActiva.addCategoria(nom_categoria);
