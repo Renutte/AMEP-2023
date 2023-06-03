@@ -11,20 +11,53 @@ public class Main {
             @Override
             public void run() {
                 K k = new K();
+                k.feedLists();
 
-                System.out.println("Crea maniwindow");
                 String buttonPressed = MainWindow();
-                System.out.println("Cierra maniwindow");
 
                 if (buttonPressed == "buttonIntroduirPregunta"){
-                    IntroduirPregunta form = IntroduirPregunta();
-                    int idPregunta = Integer.parseInt(form.inputIdPregunta.getText());
-                    String descripcio = form.inputDescripcio.getText();
-                    String text_pregunta = form.inputText_pregunta.getText();
-                    int idNivell = Integer.parseInt(form.inputIdNivell.getText());
-                    System.out.println("Introduir Pregunta: " + idPregunta + " -- " + descripcio + " -- " + text_pregunta + " -- " + idNivell);
+                    // IP
+                    IntroduirPregunta ip = IntroduirPregunta();
+                    int idPregunta = Integer.parseInt(ip.inputIdPregunta.getText());
+                    String descripcio = ip.inputDescripcio.getText();
+                    String text_pregunta = ip.inputText_pregunta.getText();
+                    int idNivell = Integer.parseInt(ip.inputIdNivell.getText());
+                    k.introduirPregunta(idPregunta, descripcio, text_pregunta, idNivell);
+                    // AC
+                    String ac_buttonPressed = "buttonConfirm";
+                    boolean introduidaUna = false;
+                    while (ac_buttonPressed == "buttonConfirm" || introduidaUna == false){
+                        afegirCategoria ac = AfegirCategoria();
+                        ac_buttonPressed = ac.buttonPressed;
+                        String nom_categoria = ac.inputNomCategoria.getText();
+                        if (ac_buttonPressed == "buttonConfirm" && !nom_categoria.equals("") && k.findCategoria(nom_categoria) != null){
+                            k.afegirCategoria(nom_categoria);
+                            introduidaUna = true;
+                        }
+                    }
+                    // IR
+                    /*String ac_buttonPressed = "buttonConfirm";
+                    boolean introduidaUna = false;
+                    while (ac_buttonPressed == "buttonConfirm" || introduidaUna == false){
+                        afegirCategoria ac = AfegirCategoria();
+                        ac_buttonPressed = ac.buttonPressed;
+                        String nom_categoria = ac.inputNomCategoria.getText();
+                        if (ac_buttonPressed == "buttonConfirm" && !nom_categoria.equals("") && k.findCategoria(nom_categoria) != null){
+                            k.afegirCategoria(nom_categoria);
+                            introduidaUna = true;
+                        }
+                    }*/
+
+                    //System.out.println("Introduir Pregunta: " + idPregunta + " -- " + descripcio + " -- " + text_pregunta + " -- " + idNivell);
                 }
 
+            }
+
+            public afegirCategoria AfegirCategoria(){
+                afegirCategoria frame = new afegirCategoria();
+                frame.setSize(500, 500);
+                frame.setVisible(true);
+                return frame;
             }
 
             public IntroduirPregunta IntroduirPregunta(){

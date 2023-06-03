@@ -18,8 +18,20 @@ public class K {
         this.listCategoria = new ArrayList<>();
         this.listEstudiant = new ArrayList<>();
     }
-    public void afegirNivellEducatiu(NivellEducatiu nivellEducatiu) {
-        listNivellEducatiu.add(nivellEducatiu);
+    public void feedLists() {
+        listNivellEducatiu.add(new NivellEducatiu());
+        listNivellEducatiu.add(new NivellEducatiu());
+        listNivellEducatiu.add(new NivellEducatiu());
+        for (NivellEducatiu aux : listNivellEducatiu) {
+            System.out.println("Nivell: " + aux.getId());
+        }
+
+        listCategoria.add(new Categoria("Mates"));
+        listCategoria.add(new Categoria("Fisica"));
+        listCategoria.add(new Categoria("Catala"));
+        for (Categoria aux : listCategoria) {
+            System.out.println("Categoria: " + aux.getId());
+        }
     }
 
     // ========== Introduir Pregunta
@@ -65,9 +77,9 @@ public class K {
         return null;
     }
 
-    private Categoria findCategoria(String nom_categoria){
+    public Categoria findCategoria(String nom_categoria){
         for (Categoria c : listCategoria) {
-            if (c.getId() == nom_categoria) return c;
+            if (c.getId().equals(nom_categoria)) return c;
         }
         System.out.println("No s'ha trobat la Categoria");
         return null;
