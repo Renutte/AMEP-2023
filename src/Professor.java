@@ -30,6 +30,12 @@ public class Professor {
     public void afegirGrup(Grup grup){
         grup.afegirGrup(testActiu);
     }
+    public void afegirEstudiant(Estudiant estudiant){
+        estudiant.autoritzarEstudiant(testActiu);
+    }
+    public void fiDonarPermisTest(){
+        testActiu = null;
+    }
 
     public Test findTest(int idTest){
         for (Test t : listTest) {

@@ -15,7 +15,7 @@ public class Grup {
         this.classe = classe;
         this.listTest = new ArrayList<>();
     }
-    
+
     public void afegirGrup(Test test){
         listTest.add(test);
         for (Estudiant e : listEstudiant){

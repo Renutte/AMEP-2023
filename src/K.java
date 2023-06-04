@@ -66,6 +66,7 @@ public class K {
     }
     public void fiIntroduirPregunta(){
         nivellEducatiuActiu.fiIntroduirPregunta();
+        nivellEducatiuActiu = null;
     }
 
 
@@ -95,15 +96,19 @@ public class K {
         professorActiu.donarPermisTest(idTest);
     }
     public void afegirGrup(int idGrup){
-        Grup grup = findGrup(idGrup);
-        professorActiu.afegirGrup(grup);
+        Grup g = findGrup(idGrup);
+        professorActiu.afegirGrup(g);
 
     }
     public void afegirEstudiant(int idEstudiant){
+        Estudiant e = findEstudiant(idEstudiant);
+        professorActiu.afegirEstudiant(e);
+
 
     }
     public void fidonarPermisTest(){
-
+        professorActiu.fiDonarPermisTest();
+        professorActiu = null;
     }
 
     // ==========
@@ -136,6 +141,14 @@ public class K {
             if (g.getId() == idGrup) return g;
         }
         System.out.println("No s'ha trobat el Grup");
+        return null;
+    }
+
+    public Estudiant findEstudiant(int idEstudiant){
+        for (Estudiant e : listEstudiant) {
+            if (e.getId() == idEstudiant) return e;
+        }
+        System.out.println("No s'ha trobat el Estudiant");
         return null;
     }
 

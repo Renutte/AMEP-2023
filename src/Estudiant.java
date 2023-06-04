@@ -15,6 +15,10 @@ public class Estudiant {
         this.listTest = new ArrayList<>();
     }
 
+    public int getId(){
+        return this.id;
+    }
+
     public void autoritzarEstudiant(Test test){
         listTest.add(test);
     }
