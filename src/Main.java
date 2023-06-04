@@ -36,7 +36,38 @@ public class Main {
             }
 
             private void CU_DonarPermisTest(){
+                // DPT
+                DonarPermisTest cpt = DonarPermisTest();
+                k.donarPermisTest(Integer.parseInt(cpt.inputIdText.getText()), Integer.parseInt(cpt.inputIdProfessor.getText()));
 
+                // AG
+                String ac_buttonPressed = "buttonConfirm";
+                while (ac_buttonPressed == "buttonConfirm"){
+                    AfegirGrup ag = AfegirGrup();
+                    ac_buttonPressed = ag.buttonPressed;
+                    if (ac_buttonPressed == "buttonConfirm" && !ag.inputIdGrup.getText().equals("")){
+                        int idGrup = Integer.parseInt(ag.inputIdGrup.getText());
+                        if (k.findGrup(idGrup) != null){
+                            k.afegirGrup(idGrup);
+                        }
+                    }
+                }
+
+                // AE
+                ac_buttonPressed = "buttonConfirm";
+                while (ac_buttonPressed == "buttonConfirm"){
+                    AfegirEstudiant ae = AfegirEstudiant();
+                    ac_buttonPressed = ae.buttonPressed;
+                    if (ac_buttonPressed == "buttonConfirm" && !ae.inputIdEstudiant.getText().equals("")){
+                        int idEstudiant = Integer.parseInt(ae.inputIdEstudiant.getText());
+                        if (k.findEstudiant(idEstudiant) != null){
+                            k.afegirEstudiant(idEstudiant);
+                        }
+                    }
+                }
+
+                // FDPT
+                k.fidonarPermisTest();
             }
 
             private void CU_ConstruirTest(){

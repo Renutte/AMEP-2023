@@ -3,7 +3,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 public class AfegirEstudiant extends JDialog {
-    private JTextField inputIdEstudiant;
+    public JTextField inputIdEstudiant;
     private JButton buttonConfirm;
     private JButton cancelButton;
     private JPanel panel1;

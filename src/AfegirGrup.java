@@ -3,7 +3,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 public class AfegirGrup  extends JDialog {
-    private JTextField inputIdGrup;
+    public JTextField inputIdGrup;
     private JButton buttonConfirm;
     private JButton buttonCancel;
     private JPanel panel1;

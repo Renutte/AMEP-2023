@@ -4,8 +4,8 @@ import java.awt.event.ActionListener;
 
 public class DonarPermisTest extends JDialog {
     private JPanel panel1;
-    private JTextField inputIdText;
-    private JTextField inputIdProfessor;
+    public JTextField inputIdText;
+    public JTextField inputIdProfessor;
     private JButton buttonConfirm;
     private JButton buttonCancel;
     public String buttonPressed = "";

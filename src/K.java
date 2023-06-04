@@ -47,6 +47,21 @@ public class K {
             System.out.println("Professor: " + aux.getId());
         }
 
+        listEstudiant.add(new Estudiant());
+        listEstudiant.add(new Estudiant());
+        listEstudiant.add(new Estudiant());
+        for (Estudiant aux : listEstudiant) {
+            System.out.println("Estudiant: " + aux.getId());
+        }
+
+        listGrup.add(new Grup("Curs", "Classe"));
+        listGrup.add(new Grup("Curs", "Classe"));
+        listGrup.add(new Grup("Curs", "Classe"));
+        for (Grup aux : listGrup) {
+            if (aux.getId() == 0) aux.setListEstudiant(listEstudiant);
+            System.out.println("Grup: " + aux.getId());
+        }
+
     }
 
     // ========== Introduir Pregunta

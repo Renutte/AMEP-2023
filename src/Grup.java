@@ -33,4 +33,8 @@ public class Grup {
         return this.id;
     }
 
+    public void setListEstudiant(List<Estudiant> listEstudiant){
+        this.listEstudiant = listEstudiant;
+    }
+
 }
