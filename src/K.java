@@ -19,19 +19,32 @@ public class K {
         this.listEstudiant = new ArrayList<>();
     }
     public void feedLists() {
-        listNivellEducatiu.add(new NivellEducatiu());
-        listNivellEducatiu.add(new NivellEducatiu());
-        listNivellEducatiu.add(new NivellEducatiu());
-        for (NivellEducatiu aux : listNivellEducatiu) {
-            System.out.println("Nivell: " + aux.getId());
-        }
-
         listCategoria.add(new Categoria("Mates"));
         listCategoria.add(new Categoria("Fisica"));
         listCategoria.add(new Categoria("Catala"));
         for (Categoria aux : listCategoria) {
             System.out.println("Categoria: " + aux.getId());
         }
+
+        listNivellEducatiu.add(new NivellEducatiu());
+        listNivellEducatiu.add(new NivellEducatiu());
+        listNivellEducatiu.add(new NivellEducatiu());
+        int preguntaId = 0;
+        for (NivellEducatiu aux : listNivellEducatiu) {
+            System.out.println("Nivell: " + aux.getId());
+            aux.introduirPregunta(preguntaId++, "DescTest", "TextPregTest");
+            aux.findPregunta(preguntaId-1).addCategoria(findCategoria("Mates"));
+            aux.findPregunta(preguntaId-1).addResposta(new Resposta("Correcta", true, 0, aux.findPregunta(preguntaId)));
+            aux.findPregunta(preguntaId-1).addResposta(new Resposta("InCorrecta", false, 1, aux.findPregunta(preguntaId)));
+        }
+
+        listProfessor.add(new Professor());
+        listProfessor.add(new Professor());
+        listProfessor.add(new Professor());
+        for (Professor aux : listProfessor) {
+            System.out.println("Professor: " + aux.getId());
+        }
+
     }
 
     // ========== Introduir Pregunta
@@ -68,14 +81,13 @@ public class K {
     }
 
     public void fiConstruirTest(){
-        nivellEducatiuActiu = null;
         nivellEducatiuActiu.fiConstruirTest();
-
-
+        nivellEducatiuActiu = null;
     }
+
     // ==========
 
-    private NivellEducatiu findNivellEducatiu(int idNivell){
+    public NivellEducatiu findNivellEducatiu(int idNivell){
         for (NivellEducatiu n : listNivellEducatiu) {
             if (n.getId() == idNivell) return n;
         }
@@ -91,7 +103,7 @@ public class K {
         return null;
     }
 
-    private Professor findProfessor(int idProfessor){
+    public Professor findProfessor(int idProfessor){
         for (Professor p : listProfessor) {
             if (p.getId() == idProfessor) return p;
         }

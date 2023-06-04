@@ -4,8 +4,8 @@ import java.awt.event.ActionListener;
 
 public class ConstruirTest extends JDialog {
     private JPanel panel1;
-    private JTextField inputIdNivell;
-    private JTextField inputIdProfessor;
+    public JTextField inputIdNivell;
+    public JTextField inputIdProfessor;
     private JButton buttonConfirm;
     private JLabel Title;
 

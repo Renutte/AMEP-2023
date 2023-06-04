@@ -5,26 +5,66 @@ import java.util.List;
 // Press Shift twice to open the Search Everywhere dialog and type `show whitespaces`,
 // then press Enter. You can now see whitespace characters in your code.
 public class Main {
-    public static K k = new K();
+    public static K k;
     public static void main(String[] args) {
         SwingUtilities.invokeLater(new Runnable() {
             @Override
             public void run() {
-                K k = new K();
+                k = new K();
                 k.feedLists();
 
-                String buttonPressed = MainWindow();
+                while(true){
+                    k.PrintInfo();
 
-                if (buttonPressed == "buttonIntroduirPregunta") CU_IntroduirPregunta();
-                if (buttonPressed == "buttonConstruirTest") CU_ConstruirTest();
-                if (buttonPressed == "buttonDonarPermisTest") CU_IntroduirPregunta();
-                if (buttonPressed == "buttonAvaluarseTest") CU_IntroduirPregunta();
-                if (buttonPressed == "buttonNouCurs") CU_IntroduirPregunta();
+                    String buttonPressed = MainWindow();
+
+                    if (buttonPressed == "buttonIntroduirPregunta") CU_IntroduirPregunta();
+                    if (buttonPressed == "buttonConstruirTest") CU_ConstruirTest();
+                    if (buttonPressed == "buttonDonarPermisTest") CU_DonarPermisTest();
+                    if (buttonPressed == "buttonAvaluarseTest") CU_AvaluarseTest();
+                    if (buttonPressed == "buttonNouCurs") CU_NouCurs();
+                }
+
+            }
+
+            private void CU_AvaluarseTest(){
+
+            }
+
+            private void CU_NouCurs(){
+
+            }
+
+            private void CU_DonarPermisTest(){
 
             }
 
             private void CU_ConstruirTest(){
+                // CT
+                ConstruirTest ct = ConstruirTest();
+                // Es null?
+                Professor pro = k.findProfessor(Integer.parseInt(ct.inputIdProfessor.getText()));
+                NivellEducatiu n = k.findNivellEducatiu(Integer.parseInt(ct.inputIdNivell.getText()));
+                //
+                k.construirTest(Integer.parseInt(ct.inputIdNivell.getText()), Integer.parseInt(ct.inputIdProfessor.getText()));
 
+                // AP
+                String ac_buttonPressed = "buttonConfirm";
+                boolean introduidaUna = false;
+                while (ac_buttonPressed == "buttonConfirm" || introduidaUna == false){
+                    AfegirPregunta ap = AfegirPregunta();
+                    ac_buttonPressed = ap.buttonPressed;
+                    if (ac_buttonPressed == "buttonConfirm" && !ap.inputIdPregunta.getText().equals("")){
+                        int idPregunta = Integer.parseInt(ap.inputIdPregunta.getText());
+                        if (k.nivellEducatiuActiu.findPregunta(idPregunta) != null){
+                            k.nivellEducatiuActiu.afegirPregunta(idPregunta);
+                            introduidaUna = true;
+                        }
+                    }
+                }
+
+                // FCT
+                k.fiConstruirTest();
             }
 
             private void CU_IntroduirPregunta(){
@@ -68,7 +108,58 @@ public class Main {
                 }
                 // FIP
                 k.fiIntroduirPregunta();
-                k.PrintInfo();
+
+            }
+
+
+
+            public PropostaResposta PropostaResposta(){
+                PropostaResposta frame = new PropostaResposta();
+                frame.setSize(500, 500);
+                frame.setVisible(true);
+                return frame;
+            }
+
+            public AvaluarseTest AvaluarseTest(){
+                AvaluarseTest frame = new AvaluarseTest();
+                frame.setSize(500, 500);
+                frame.setVisible(true);
+                return frame;
+            }
+
+            public AfegirEstudiant AfegirEstudiant(){
+                AfegirEstudiant frame = new AfegirEstudiant();
+                frame.setSize(500, 500);
+                frame.setVisible(true);
+                return frame;
+            }
+
+            public AfegirGrup AfegirGrup(){
+                AfegirGrup frame = new AfegirGrup();
+                frame.setSize(500, 500);
+                frame.setVisible(true);
+                return frame;
+            }
+
+            public DonarPermisTest DonarPermisTest(){
+                DonarPermisTest frame = new DonarPermisTest();
+                frame.setSize(500, 500);
+                frame.setVisible(true);
+                return frame;
+            }
+
+            public AfegirPregunta AfegirPregunta(){
+                AfegirPregunta frame = new AfegirPregunta();
+                frame.setSize(500, 500);
+                frame.setVisible(true);
+                return frame;
+            }
+
+            public ConstruirTest ConstruirTest(){
+                ConstruirTest frame = new ConstruirTest();
+                frame.setSize(500, 500);
+                frame.setVisible(true);
+                return frame;
             }
 
             public IntroduirResposta IntroduirResposta(){

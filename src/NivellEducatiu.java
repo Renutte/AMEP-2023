@@ -51,7 +51,7 @@ public class NivellEducatiu {
     public void fiConstruirTest(){
         testActiu = null;
     }
-    private Pregunta findPregunta(int idPregunta){
+    public Pregunta findPregunta(int idPregunta){
         for (Pregunta p : listPregunta) {
             if (p.getId() == idPregunta) return p;
         }

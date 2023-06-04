@@ -4,7 +4,7 @@ import java.awt.event.ActionListener;
 
 public class AfegirPregunta extends JDialog {
     private JPanel panel1;
-    private JTextField inputIdPregunta;
+    public JTextField inputIdPregunta;
     private JButton buttonConfirm;
     private JButton buttonCancel;
     public String buttonPressed = "";
