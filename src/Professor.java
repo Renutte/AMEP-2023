@@ -3,6 +3,7 @@ import java.util.List;
 public class Professor {
     private static int idContador = 0;
     private int id;
+    Test testActiu;
 
     private List<Test> listTest;
 
@@ -18,6 +19,18 @@ public class Professor {
         Test test = new Test(this,nivellEducatiu);
         listTest.add(test);
         nivellEducatiu.addTest(test);
+    }
+
+    public void donarPermisTest(int idTest){
+        testActiu = findTest(idTest);
+    }
+
+    public Test findTest(int idTest){
+        for (Test t : listTest) {
+            if (t.getId() == idTest) return t;
+        }
+        System.out.println("No s'ha trobat el test");
+        return null;
     }
 
     public void PrintInfo(){

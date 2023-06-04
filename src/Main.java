@@ -57,7 +57,7 @@ public class Main {
                     if (ac_buttonPressed == "buttonConfirm" && !ap.inputIdPregunta.getText().equals("")){
                         int idPregunta = Integer.parseInt(ap.inputIdPregunta.getText());
                         if (k.nivellEducatiuActiu.findPregunta(idPregunta) != null){
-                            k.nivellEducatiuActiu.afegirPregunta(idPregunta);
+                            k.afegirPregunta(idPregunta);
                             introduidaUna = true;
                         }
                     }

@@ -33,4 +33,7 @@ public class Test {
         //this.nivellEducatiu.PrintInfo();
         for (Pregunta aux : this.listPregunta) aux.PrintInfo();
     }
+    public int getId(){
+        return this.id;
+    }
 }
