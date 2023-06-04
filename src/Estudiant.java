@@ -15,6 +15,10 @@ public class Estudiant {
         this.listTest = new ArrayList<>();
     }
 
+    public void autoritzarEstudiant(Test test){
+        listTest.add(test);
+    }
+
     public void PrintInfo(){
         System.out.println(" === INFO Estudiant === ");
         System.out.println(this.id);

@@ -7,6 +7,7 @@ public class Grup {
     private String curs;
     private String classe;
     private List<Test> listTest;
+    private List<Estudiant> listEstudiant;
 
     public Grup(String curs, String classe) {
         this.id = idContador++;
@@ -14,7 +15,13 @@ public class Grup {
         this.classe = classe;
         this.listTest = new ArrayList<>();
     }
-
+    
+    public void afegirGrup(Test test){
+        listTest.add(test);
+        for (Estudiant e : listEstudiant){
+            e.autoritzarEstudiant(test);
+        }
+    }
     public void PrintInfo(){
         System.out.println(" === INFO Grup === ");
         System.out.println(this.id);
@@ -22,4 +29,8 @@ public class Grup {
         System.out.println(this.classe);
         for (Test aux : this.listTest) aux.PrintInfo();
     }
+    public int getId(){
+        return this.id;
+    }
+
 }

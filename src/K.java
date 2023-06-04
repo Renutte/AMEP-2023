@@ -95,6 +95,8 @@ public class K {
         professorActiu.donarPermisTest(idTest);
     }
     public void afegirGrup(int idGrup){
+        Grup grup = findGrup(idGrup);
+        professorActiu.afegirGrup(grup);
 
     }
     public void afegirEstudiant(int idEstudiant){
@@ -126,6 +128,14 @@ public class K {
             if (p.getId() == idProfessor) return p;
         }
         System.out.println("No s'ha trobat el Professor");
+        return null;
+    }
+
+    public Grup findGrup(int idGrup){
+        for (Grup g : listGrup) {
+            if (g.getId() == idGrup) return g;
+        }
+        System.out.println("No s'ha trobat el Grup");
         return null;
     }
 

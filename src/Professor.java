@@ -15,14 +15,20 @@ public class Professor {
     public int getId(){
         return this.id;
     }
+
+    // ========== Construir Test
     public void construirTest(NivellEducatiu nivellEducatiu){
         Test test = new Test(this,nivellEducatiu);
         listTest.add(test);
         nivellEducatiu.addTest(test);
     }
 
+    // ========== Donar Permis Test
     public void donarPermisTest(int idTest){
         testActiu = findTest(idTest);
+    }
+    public void afegirGrup(Grup grup){
+        grup.afegirGrup(testActiu);
     }
 
     public Test findTest(int idTest){
