@@ -67,7 +67,7 @@ public class Test {
         return this.id;
     }
 
-    public Boolean getHistoric(){
+    public Boolean isHistoric(){
         return  this.historic;
     }
 }

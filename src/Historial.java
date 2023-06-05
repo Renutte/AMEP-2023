@@ -18,7 +18,7 @@ public class Historial {
     }
 
     public void fiAvaluarseTest(Test test, Avaluacio avaluacio){
-        if(!test.getHistoric()){
+        if(!test.isHistoric()){
             this.mitjana = (this.mitjana*this.quantsNoHistorics+avaluacio.getNota())/(this.quantsNoHistorics +1);
             this.quantsNoHistorics = this.quantsNoHistorics +1;
         }

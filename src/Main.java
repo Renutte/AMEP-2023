@@ -45,6 +45,7 @@ public class Main {
             }
 
             private void CU_NouCurs(){
+                k.nouCurs();
 
             }
 

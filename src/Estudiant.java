@@ -35,7 +35,6 @@ public class Estudiant {
         testActiu = findTest(idTest);
         testActiu.avaluarseTest(this);
         createAvaluacio(testActiu);
-
     }
     public void avaluarseTest(NivellEducatiu nivellEducatiu){
         historialActiu = findHistorial(nivellEducatiu.getId());
@@ -43,6 +42,9 @@ public class Estudiant {
 
     public void createAvaluacio(Test test){
         avaluacioActiva = new Avaluacio(test);
+        if(!test.isHistoric()){
+           this.listAvaluacio.add(avaluacioActiva);
+        }
     }
 
     public void propostaResposta(int idPregunta,int ordinal){
