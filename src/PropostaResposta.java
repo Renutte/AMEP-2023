@@ -4,8 +4,8 @@ import java.awt.event.ActionListener;
 
 public class PropostaResposta extends JDialog{
     private JPanel panel1;
-    private JTextField inputIdPregunta;
-    private JTextField inputOrdinal;
+    public JTextField inputIdPregunta;
+    public JTextField inputOrdinal;
     private JButton confirmButton;
     private JButton cancelButton;
 

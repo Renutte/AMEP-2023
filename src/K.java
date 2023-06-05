@@ -20,16 +20,11 @@ public class K {
         this.listEstudiant = new ArrayList<>();
     }
     public void feedLists() {
-        listCategoria.add(new Categoria("Mates"));
-        listCategoria.add(new Categoria("Fisica"));
-        listCategoria.add(new Categoria("Catala"));
+
         for (Categoria aux : listCategoria) {
             System.out.println("Categoria: " + aux.getId());
         }
 
-        listNivellEducatiu.add(new NivellEducatiu());
-        listNivellEducatiu.add(new NivellEducatiu());
-        listNivellEducatiu.add(new NivellEducatiu());
         int preguntaId = 0;
         for (NivellEducatiu aux : listNivellEducatiu) {
             System.out.println("Nivell: " + aux.getId());
@@ -155,8 +150,6 @@ public class K {
     }
 
 
-
-
     public NivellEducatiu findNivellEducatiu(int idNivell){
         for (NivellEducatiu n : listNivellEducatiu) {
             if (n.getId() == idNivell) return n;
@@ -196,6 +189,25 @@ public class K {
         System.out.println("No s'ha trobat el Estudiant");
         return null;
     }
+
+    public void addCategoria(Categoria categoria){
+        this.listCategoria.add(categoria);
+    }
+
+    public void addNivellEducatiu(NivellEducatiu nivellEducatiu){
+        this.listNivellEducatiu.add(nivellEducatiu);
+    }
+
+    public void addProfessor(Professor professor){
+        this.listProfessor.add(professor);
+    }
+    public void addEstudiant(Estudiant estudiant){
+            this.listEstudiant.add(estudiant);
+    }
+    public void addGrup(Grup grup){
+                this.listGrup.add(grup);
+        }
+
 
     public void PrintInfo(){
         System.out.println(" === INFO K === ");

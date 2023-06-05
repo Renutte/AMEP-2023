@@ -12,6 +12,7 @@ public class Main {
             public void run() {
                 k = new K();
                 k.feedLists();
+                construirTest();
 
                 while(true){
                     k.PrintInfo();
@@ -28,7 +29,19 @@ public class Main {
             }
 
             private void CU_AvaluarseTest(){
+                // AT
+                AvaluarseTest av = AvaluarseTest();
+                k.avaluarseTest(Integer.parseInt(av.inputIdTest.getText()), Integer.parseInt(av.inputIdEstudiant.getText()));
 
+                // PR
+                String ac_buttonPressed = "buttonConfirm";
+                while (ac_buttonPressed == "buttonConfirm"){
+                    PropostaResposta pr = PropostaResposta();
+                    ac_buttonPressed = pr.buttonPressed;
+                    if (ac_buttonPressed == "buttonConfirm" && !pr.inputIdPregunta.getText().equals("") && !pr.inputOrdinal.getText().equals("")){
+                        k.propostaResposta(Integer.parseInt(pr.inputIdPregunta.getText()), Integer.parseInt(pr.inputOrdinal.getText()));
+                    }
+                }
             }
 
             private void CU_NouCurs(){
@@ -93,9 +106,103 @@ public class Main {
                         }
                     }
                 }
-
                 // FCT
                 k.fiConstruirTest();
+            }
+
+            private void construirTest(){
+
+
+                // CATEGORIES
+                Categoria c1 = new Categoria("Mates");
+                Categoria c2 = new Categoria("Fisica");
+                Categoria c3 = new Categoria("Catala");
+
+                k.addCategoria(c1);
+                k.addCategoria(c2);
+                k.addCategoria(c3);
+
+                // NIVELLS
+                NivellEducatiu n1 = new NivellEducatiu();
+                NivellEducatiu n2 = new NivellEducatiu();
+                NivellEducatiu n3 = new NivellEducatiu();
+
+                k.addNivellEducatiu(n1);
+                k.addNivellEducatiu(n2);
+                k.addNivellEducatiu(n3);
+
+                //PREGUNTES
+                k.introduirPregunta(0,"A","A",0);
+                k.afegirCategoria("Mates");
+                k.introduirResposta("a",true);
+                k.introduirResposta("b",false);
+                k.fiIntroduirPregunta();
+                k.introduirPregunta(1,"A","A",0);
+                k.afegirCategoria("Fisica");
+                k.introduirResposta("c",true);
+                k.introduirResposta("d",false);
+                k.fiIntroduirPregunta();
+
+                k.introduirPregunta(2,"A","A",1);
+                k.afegirCategoria("Mates");
+                k.introduirResposta("e",false);
+                k.introduirResposta("f",true);
+                k.fiIntroduirPregunta();
+                k.introduirPregunta(3,"A","A",1);
+                k.afegirCategoria("Catala");
+                k.introduirResposta("g",true);
+                k.introduirResposta("h",false);
+                k.fiIntroduirPregunta();
+
+                k.introduirPregunta(4,"A","A",2);
+                k.afegirCategoria("Catala");
+                k.introduirResposta("i",true);
+                k.introduirResposta("j",false);
+                k.fiIntroduirPregunta();
+
+                //PROFESSORS
+                Professor p1 = new Professor();
+                Professor p2 = new Professor();
+                k.addProfessor(p1);
+                k.addProfessor(p2);
+
+                //ESTUDIANTS
+                Estudiant e1 = new Estudiant();
+                Estudiant e2 = new Estudiant();
+                Estudiant e3 = new Estudiant();
+                k.addEstudiant(e1);
+                k.addEstudiant(e2);
+                k.addEstudiant(e3);
+
+                //GRUPS
+                Grup g1 = new Grup("2n","A");
+                Grup g2 = new Grup("3r","B");
+                Grup g3 = new Grup("4t","C");
+                k.addGrup(g1);
+                k.addGrup(g2);
+                k.addGrup(g3);
+
+                g1.addEstudiant(e1);
+                g1.addEstudiant(e2);
+
+                g2.addEstudiant(e2);
+                g2.addEstudiant(e3);
+
+                g3.addEstudiant(e3);
+                g3.addEstudiant(e1);
+
+                //TESTS
+                k.construirTest(0,0 );
+                k.afegirPregunta(0);
+                k.afegirPregunta(1);
+                k.fiConstruirTest();
+
+                //PERMISOS AL TEST
+                k.donarPermisTest(0,0);
+                k.afegirGrup(0);
+                k.afegirEstudiant(0);
+                k.afegirEstudiant(1);
+
             }
 
             private void CU_IntroduirPregunta(){

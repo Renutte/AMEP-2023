@@ -14,6 +14,7 @@ public class Grup {
         this.curs = curs;
         this.classe = classe;
         this.listTest = new ArrayList<>();
+        this.listEstudiant = new ArrayList<>();
     }
 
     public void afegirGrup(Test test){
@@ -22,6 +23,11 @@ public class Grup {
             e.autoritzarEstudiant(test);
         }
     }
+
+    public void addEstudiant(Estudiant estudiant){
+        this.listEstudiant.add(estudiant);
+    }
+
     public void PrintInfo(){
         System.out.println(" === INFO Grup === ");
         System.out.println(this.id);

@@ -3,10 +3,10 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 public class AvaluarseTest extends JDialog {
-    private JTextField inputIdTest;
-    private JTextField inputIdEstudiant;
-    private JButton confirmButton;
-    private JButton cancelButton;
+    public JTextField inputIdTest;
+    public JTextField inputIdEstudiant;
+    public JButton confirmButton;
+    public JButton cancelButton;
     private JPanel panel1;
 
     public String buttonPressed = "";
