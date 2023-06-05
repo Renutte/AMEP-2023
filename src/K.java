@@ -152,8 +152,6 @@ public class K {
         for(Professor p : listProfessor){
             p.nouCurs();
         }
-
-
     }
 
 

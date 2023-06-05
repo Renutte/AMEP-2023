@@ -64,6 +64,7 @@ public class Estudiant {
             a.nouCurs();
             a = null;
         }
+        this.listAvaluacio = new ArrayList<>();
     }
 
 

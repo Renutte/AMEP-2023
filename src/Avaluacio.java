@@ -50,6 +50,7 @@ public class Avaluacio {
         for (Proposta p : listProposta) {
             p = null;
         }
+        this.listProposta = new ArrayList<>();
     }
 
     public float getNota(){
