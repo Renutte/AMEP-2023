@@ -42,6 +42,9 @@ public class Main {
                         k.propostaResposta(Integer.parseInt(pr.inputIdPregunta.getText()), Integer.parseInt(pr.inputOrdinal.getText()));
                     }
                 }
+
+                // FAT
+                k.fiAvaluarseTest();
             }
 
             private void CU_NouCurs(){
