@@ -31,6 +31,7 @@ public class NivellEducatiu {
         preguntaActiva.createResposta(text_resposta,correcta);
     }
     public void fiIntroduirPregunta(){
+        preguntaActiva.fiIntroduirPregunta();
         listPregunta.add(preguntaActiva);
         preguntaActiva = null;
     }
