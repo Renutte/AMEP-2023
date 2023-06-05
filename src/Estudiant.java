@@ -7,6 +7,10 @@ public class Estudiant {
     private List<Historial> listHistorial;
     private List<Avaluacio> listAvaluacio;
     private List<Test> listTest;
+    Test testActiu;
+    Historial historialActiu;
+
+    Avaluacio avaluacioActiva;
 
     public Estudiant() {
         this.id = idContador++;
@@ -19,9 +23,49 @@ public class Estudiant {
         return this.id;
     }
 
+    // ========== Donar Permis Test
+
     public void autoritzarEstudiant(Test test){
         listTest.add(test);
     }
+
+
+    // ========== Avaluarse Test
+    public void avaluarseTest(int idTest){
+        testActiu = findTest(idTest);
+        testActiu.avaluarseTest(this);
+        createAvaluacio(testActiu);
+
+    }
+    public void avaluarseTest(NivellEducatiu nivellEducatiu){
+        historialActiu = findHistorial(nivellEducatiu.getId());
+    }
+
+    public void createAvaluacio(Test test){
+        avaluacioActiva = new Avaluacio(test);
+    }
+
+    public void propostaResposta(int idPregunta,int ordinal){
+        testActiu.propostaResposta(idPregunta,ordinal, avaluacioActiva);
+
+    }
+    public void fiAvaluarseTest(){
+
+        testActiu.fiAvaluarseTest(historialActiu, avaluacioActiva);
+        testActiu = null;
+        historialActiu = null;
+        avaluacioActiva = null;
+    }
+
+    // ========== NouCurs
+
+    public void nouCurs(){
+        for (Avaluacio a : listAvaluacio) {
+            a.nouCurs();
+            a = null;
+        }
+    }
+
 
     public void PrintInfo(){
         System.out.println(" === INFO Estudiant === ");
@@ -30,4 +74,21 @@ public class Estudiant {
         for (Avaluacio aux : this.listAvaluacio) aux.PrintInfo();
         for (Test aux : this.listTest) aux.PrintInfo();
     }
+
+    public Test findTest(int idTest){
+        for (Test t : listTest) {
+            if (t.getId() == idTest) return t;
+        }
+        System.out.println("No s'ha trobat el test");
+        return null;
+    }
+    public Historial findHistorial(int idNivell){
+        for (Historial h : listHistorial) {
+            if (h.getNivellEducatiuId() == idNivell) return h;
+        }
+        System.out.println("No s'ha trobat el historial");
+        return null;
+    }
+
+
 }

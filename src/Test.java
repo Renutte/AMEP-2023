@@ -24,6 +24,36 @@ public class Test {
         this.listPregunta.add(pregunta);
     }
 
+    public void avaluarseTest(Estudiant estudiant){
+        estudiant.avaluarseTest(this.nivellEducatiu);
+    }
+
+    public void propostaResposta(int idPregunta, int ordinal, Avaluacio avaluacio){
+        Pregunta p = findPregunta(idPregunta);
+        p.propostaResposta(ordinal,p, avaluacio);
+
+    }
+
+    public void fiAvaluarseTest(Historial historial, Avaluacio avaluacio){
+        this.resolucions = this.resolucions +1;
+        historial.fiAvaluarseTest(this, avaluacio);
+
+    }
+
+    // ========== Nou Curs
+
+    public void testHistoric(){
+        this.historic = true;
+    }
+
+    public Pregunta findPregunta(int idPregunta){
+        for (Pregunta p : listPregunta) {
+            if (p.getId() == idPregunta) return p;
+        }
+        System.out.println("No s'ha trobat la Pregunta");
+        return null;
+    }
+
     public void PrintInfo(){
         System.out.println(" === INFO Test === ");
         System.out.println(this.id);
@@ -35,5 +65,9 @@ public class Test {
     }
     public int getId(){
         return this.id;
+    }
+
+    public Boolean getHistoric(){
+        return  this.historic;
     }
 }

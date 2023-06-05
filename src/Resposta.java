@@ -6,12 +6,12 @@ public class Resposta {
 
     private String text_resposta;
     private Boolean correcta;
-    private int ordinal;
+    private Integer ordinal;
     private Pregunta pregunta;
 
     private List<Proposta> listProposta;
 
-    public Resposta(String text_resposta, Boolean correcta, int ordinal, Pregunta pregunta) {
+    public Resposta(String text_resposta, Boolean correcta, Integer ordinal, Pregunta pregunta) {
         this.id = idContador++;
         this.text_resposta = text_resposta;
         this.correcta = correcta;
@@ -19,6 +19,15 @@ public class Resposta {
         this.pregunta = pregunta;
         this.listProposta = new ArrayList<>();
     }
+
+    public void propostaResposta(Proposta proposta){
+        this.listProposta.add(proposta);
+    }
+    public int getOrdinal(){
+        return this.ordinal;
+    }
+
+
 
 
     public void PrintInfo(){

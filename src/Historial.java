@@ -17,6 +17,22 @@ public class Historial {
         this.nivellEducatiu = nivellEducatiu;
     }
 
+    public void fiAvaluarseTest(Test test, Avaluacio avaluacio){
+        if(!test.getHistoric()){
+            this.mitjana = (this.mitjana*this.quantsNoHistorics+avaluacio.getNota())/(this.quantsNoHistorics +1);
+            this.quantsNoHistorics = this.quantsNoHistorics +1;
+        }
+        else{
+            this.quantsHistorics = this.quantsHistorics +1;
+        }
+        avaluacio.fiAvaluarseTest(
+                test);
+    }
+
+    public int getNivellEducatiuId(){
+        return this.nivellEducatiu.getId();
+    }
+
     public void PrintInfo(){
         System.out.println(" === INFO Historial === ");
         System.out.println(this.id);

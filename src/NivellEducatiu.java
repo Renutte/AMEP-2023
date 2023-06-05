@@ -7,7 +7,6 @@ public class NivellEducatiu {
     private List<Pregunta> listPregunta;
     private List<Test> listTest;
     Pregunta preguntaActiva;
-
     Test testActiu;
 
     public NivellEducatiu() {

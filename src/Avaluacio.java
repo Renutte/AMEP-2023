@@ -20,6 +20,42 @@ public class Avaluacio {
         this.listProposta = new ArrayList<>();
     }
 
+    public void propostaResposta(Pregunta pregunta, Resposta resposta){
+        Proposta pro = createProposta(resposta,pregunta,this);
+        addProposta(pro);
+        if(resposta != null){
+            resposta.propostaResposta(pro);
+        }
+    }
+    public Proposta createProposta(Resposta resposta, Pregunta pregunta, Avaluacio avaluacio){
+        Proposta pro = new Proposta(resposta,pregunta,this);
+        return pro;
+    }
+    public void addProposta(Proposta pro){
+        this.listProposta.add(pro);
+    }
+
+    public void fiAvaluarseTest(Test test){
+        this.nota = calcularNota();
+    }
+
+    public float calcularNota(){
+        return 0;
+    }
+
+
+    // ========== NouCurs
+
+    public void nouCurs(){
+        for (Proposta p : listProposta) {
+            p = null;
+        }
+    }
+
+    public float getNota(){
+        return this.nota;
+    }
+
     public void PrintInfo(){
         System.out.println(" === INFO Avaluacio === ");
         System.out.println(this.id);

@@ -8,10 +8,9 @@ public class K {
     private List<Grup> listGrup;
     private List<Categoria> listCategoria;
     private List<Estudiant> listEstudiant;
-
     NivellEducatiu nivellEducatiuActiu;
-
     Professor professorActiu;
+    Estudiant estudiantActiu;
 
     public K() {
         this.listNivellEducatiu = new ArrayList<>();
@@ -102,7 +101,6 @@ public class K {
         nivellEducatiuActiu.fiConstruirTest();
         nivellEducatiuActiu = null;
     }
-    // ==========
 
     // ========== Donar Permis Test
 
@@ -126,7 +124,41 @@ public class K {
         professorActiu = null;
     }
 
-    // ==========
+    // ========== Avaluarse Test
+
+    public void avaluarseTest(int idTest,int idEstudiant){
+        estudiantActiu = findEstudiant(idEstudiant);
+        estudiantActiu.avaluarseTest(idTest);
+    }
+
+    public void propostaResposta(int idPregunta,int ordinal){
+        estudiantActiu.propostaResposta(idPregunta,ordinal);
+
+    }
+
+    public void fiAvaluarseTest(){
+
+        estudiantActiu.fiAvaluarseTest();
+        estudiantActiu = null;
+
+    }
+
+    // ========== NouCurs
+
+    public void nouCurs(){
+        for (Estudiant e : listEstudiant) {
+            e.nouCurs();
+        }
+        for(Professor p : listProfessor){
+            p.nouCurs();
+        }
+
+
+    }
+
+
+
+
     public NivellEducatiu findNivellEducatiu(int idNivell){
         for (NivellEducatiu n : listNivellEducatiu) {
             if (n.getId() == idNivell) return n;

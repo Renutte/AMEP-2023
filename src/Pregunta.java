@@ -30,9 +30,18 @@ public class Pregunta {
     public void addResposta(Resposta resposta){
         this.listResposta.add(resposta);
     }
-    private void introduirResposta(){
-        // Crear respuesta
-        ordinalContador++;
+
+    public void propostaResposta(Integer ordinal, Pregunta pregunta, Avaluacio avaluacio){
+        Resposta r;
+        if(ordinal != null){
+             r = findResposta(ordinal);
+        }
+        else{
+             r = null;
+        }
+
+        avaluacio.propostaResposta(pregunta, r);
+
     }
 
     public void augmentarAparicions(){
@@ -48,6 +57,14 @@ public class Pregunta {
         return this.id;
     }
 
+    public Resposta findResposta(int ordinal){
+        for (Resposta r : listResposta) {
+            if (r.getOrdinal() == ordinal) return r;
+        }
+        System.out.println("No s'ha trobat la Resposta");
+        return null;
+    }
+
 
     public void PrintInfo(){
         System.out.println(" === INFO Pregunta === ");
@@ -58,28 +75,4 @@ public class Pregunta {
         for (Categoria aux : this.listCategoria) aux.PrintInfo();
         for (Resposta aux : this.listResposta) aux.PrintInfo();
     }
-
-    /*    List<Resposta> respostes;
-    List<Categoria> categories;
-    private String descripcio;
-    private String textPregunta;
-    private int aparicions;
-
-    public Pregunta(String descripcio, String textPregunta){
-        this.descripcio = descripcio;
-        this.textPregunta = textPregunta;
-        this.aparicions = 0;
-        this.categories = new ArrayList<>();
-        this.respostes = new ArrayList<>();
-    }
-
-    public void addCategoria(Categoria categoria){
-        this.categories.add(categoria);
-    }
-    public Categoria getFirstCategoria(){
-        return this.categories.get(0);
-    }
-    public void addResposta(Resposta resposta){
-        this.respostes.add(resposta);
-    }*/
 }

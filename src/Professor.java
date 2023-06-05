@@ -37,6 +37,14 @@ public class Professor {
         testActiu = null;
     }
 
+    // ========== Nou Curs
+
+    public void nouCurs(){
+        for (Test t : listTest) {
+            t.testHistoric();
+        }
+    }
+
     public Test findTest(int idTest){
         for (Test t : listTest) {
             if (t.getId() == idTest) return t;
