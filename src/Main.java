@@ -336,8 +336,11 @@ public class Main {
                 //PERMISOS AL TEST
                 k.donarPermisTest(0,0);
                 k.afegirGrup(0);
-                k.afegirEstudiant(0);
-                k.afegirEstudiant(1);
+                k.afegirEstudiant(2);
+                k.fidonarPermisTest();
+                k.donarPermisTest(1,1);
+                k.afegirGrup(2);
+                k.fidonarPermisTest();
 
                 //HISTORIALS
                 e1.createHistorial(n1);
