@@ -149,14 +149,15 @@ public class Main {
                         MessageBox("No s'ha pogut afegir la categoria");
                     }
                 }
+
                 // IR
                 boolean introduidaCorrecta = false;
                 String ir_buttonPressed = "buttonConfirm";
-                try{
-                    while (ir_buttonPressed == "buttonConfirm"){
+                while (ir_buttonPressed == "buttonConfirm"){
+                    try{
                         IntroduirResposta ir = IntroduirResposta();
                         ir_buttonPressed = ir.buttonPressed;
-                        // No permet introduir mes d'una correcta
+                        // No permet introduir mes d'una correctaº
                         if (!(introduidaCorrecta == true && ir.inputCorrecta.isSelected())){
                             if (ir_buttonPressed == "buttonConfirm"){
                                 k.introduirResposta(ir.inputText_Resposta.getText(), ir.inputCorrecta.isSelected());
@@ -167,12 +168,12 @@ public class Main {
                             if (ir.inputCorrecta.isSelected()) {
                                 introduidaCorrecta = true;
                             }
-                        }
-                        else throw new Exception("Duplicitat de resposta correcta");
+                        }  else throw new Exception("Duplicitat de resposta correcta");
+                    }catch (Exception e) {
+                        MessageBox("No s'ha pogut introduir la resposta \n (ja existeix una correcta)");
                     }
-                }catch (Exception e) {
-                    MessageBox("No s'ha pogut introduir la resposta \n (ja existeix una correcta)");
                 }
+
                 // FIP
                 k.fiIntroduirPregunta();
 
