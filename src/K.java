@@ -19,44 +19,6 @@ public class K {
         this.listCategoria = new ArrayList<>();
         this.listEstudiant = new ArrayList<>();
     }
-/*    public void feedLists() {
-
-        for (Categoria aux : listCategoria) {
-            System.out.println("Categoria: " + aux.getId());
-        }
-
-        int preguntaId = 0;
-        for (NivellEducatiu aux : listNivellEducatiu) {
-            System.out.println("Nivell: " + aux.getId());
-            aux.introduirPregunta(preguntaId++, "DescTest", "TextPregTest");
-            aux.findPregunta(preguntaId-1).addCategoria(findCategoria("Mates"));
-            aux.findPregunta(preguntaId-1).addResposta(new Resposta("Correcta", true, 0, aux.findPregunta(preguntaId)));
-            aux.findPregunta(preguntaId-1).addResposta(new Resposta("InCorrecta", false, 1, aux.findPregunta(preguntaId)));
-        }
-
-        listProfessor.add(new Professor());
-        listProfessor.add(new Professor());
-        listProfessor.add(new Professor());
-        for (Professor aux : listProfessor) {
-            System.out.println("Professor: " + aux.getId());
-        }
-
-        listEstudiant.add(new Estudiant());
-        listEstudiant.add(new Estudiant());
-        listEstudiant.add(new Estudiant());
-        for (Estudiant aux : listEstudiant) {
-            System.out.println("Estudiant: " + aux.getId());
-        }
-
-        listGrup.add(new Grup("Curs", "Classe"));
-        listGrup.add(new Grup("Curs", "Classe"));
-        listGrup.add(new Grup("Curs", "Classe"));
-        for (Grup aux : listGrup) {
-            if (aux.getId() == 0) aux.setListEstudiant(listEstudiant);
-            System.out.println("Grup: " + aux.getId());
-        }
-
-    }*/
 
     // ========== Introduir Pregunta
     public void introduirPregunta(int idPregunta, String descripcio, String text_pregunta, int idNivell){
@@ -64,7 +26,6 @@ public class K {
         nivellEducatiuActiu = findNivellEducatiu(idNivell);
         // 1.2
         nivellEducatiuActiu.introduirPregunta(idPregunta, descripcio, text_pregunta);
-        /*System.out.println("Introduir Pregunta: " + idPregunta + " -- " + descripcio + " -- " + text_pregunta + " -- " + idNivell);*/
     }
     public void afegirCategoria(String idCategoria){
         Categoria c = findCategoria(idCategoria);
