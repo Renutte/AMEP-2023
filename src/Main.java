@@ -137,33 +137,18 @@ public class Main {
                 String ac_buttonPressed = "buttonConfirm";
                 while (ac_buttonPressed == "buttonConfirm" || introduidaUna == false){
                     try{
-                        //while (ac_buttonPressed == "buttonConfirm" || introduidaUna == false){
-                            afegirCategoria ac = AfegirCategoria();
-                            ac_buttonPressed = ac.buttonPressed;
-                            String nom_categoria = ac.inputNomCategoria.getText();
-                            if (ac_buttonPressed == "buttonConfirm" && !nom_categoria.equals("")){
-                                if(k.findCategoria(nom_categoria) == null) throw new Exception("Categoria Null");
-                                k.afegirCategoria(nom_categoria);
-                                introduidaUna = true;
-                            }
-                        //}
+                        afegirCategoria ac = AfegirCategoria();
+                        ac_buttonPressed = ac.buttonPressed;
+                        String nom_categoria = ac.inputNomCategoria.getText();
+                        if (ac_buttonPressed == "buttonConfirm" && !nom_categoria.equals("")){
+                            if(k.findCategoria(nom_categoria) == null) throw new Exception("Categoria Null");
+                            k.afegirCategoria(nom_categoria);
+                            introduidaUna = true;
+                        }
                     }catch (Exception e){
                         MessageBox("No s'ha pogut afegir la categoria");
                     }
                 }
-
-                ac_buttonPressed = "buttonConfirm";
-                introduidaUna = false;
-                while (ac_buttonPressed == "buttonConfirm" || introduidaUna == false){
-                    afegirCategoria ac = AfegirCategoria();
-                    ac_buttonPressed = ac.buttonPressed;
-                    String nom_categoria = ac.inputNomCategoria.getText();
-                    if (ac_buttonPressed == "buttonConfirm" && !nom_categoria.equals("") && k.findCategoria(nom_categoria) != null){
-                        k.afegirCategoria(nom_categoria);
-                        introduidaUna = true;
-                    }
-                }
-
                 // IR
                 String ir_buttonPressed = "buttonConfirm";
                 boolean introduidaCorrecta = false;
