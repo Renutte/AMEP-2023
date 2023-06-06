@@ -31,7 +31,6 @@ public class Test {
     public void propostaResposta(int idPregunta, int ordinal, Avaluacio avaluacio){
         Pregunta p = findPregunta(idPregunta);
         p.propostaResposta(ordinal,p, avaluacio);
-
     }
 
     public void fiAvaluarseTest(Historial historial, Avaluacio avaluacio){

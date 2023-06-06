@@ -46,10 +46,14 @@ public class Main {
                 // PR
                 String ac_buttonPressed = "buttonConfirm";
                 while (ac_buttonPressed == "buttonConfirm"){
-                    PropostaResposta pr = PropostaResposta();
-                    ac_buttonPressed = pr.buttonPressed;
-                    if (ac_buttonPressed == "buttonConfirm" && !pr.inputIdPregunta.getText().equals("") && !pr.inputOrdinal.getText().equals("")){
-                        k.propostaResposta(Integer.parseInt(pr.inputIdPregunta.getText()), Integer.parseInt(pr.inputOrdinal.getText()));
+                    try{
+                        PropostaResposta pr = PropostaResposta();
+                        ac_buttonPressed = pr.buttonPressed;
+                        if (ac_buttonPressed == "buttonConfirm" && !pr.inputIdPregunta.getText().equals("") && !pr.inputOrdinal.getText().equals("")){
+                            k.propostaResposta(Integer.parseInt(pr.inputIdPregunta.getText()), Integer.parseInt(pr.inputOrdinal.getText()));
+                        }
+                    }catch (Exception e) {
+                        MessageBox("No s'ha pogut avaluar la pregunta");
                     }
                 }
                 // FAT
@@ -254,34 +258,34 @@ public class Main {
                 k.addNivellEducatiu(n3);
 
                 //PREGUNTES
-                k.introduirPregunta(0,"A","A",0);
+                k.introduirPregunta(0,"Sumes","2+2",0);
                 k.afegirCategoria("Mates");
-                k.introduirResposta("a",true);
-                k.introduirResposta("b",false);
+                k.introduirResposta("4",true);
+                k.introduirResposta("5",false);
                 k.fiIntroduirPregunta();
 
-                k.introduirPregunta(1,"A","A",0);
+                k.introduirPregunta(1,"Gravetat","Quina es la gravetat de la terra?",0);
                 k.afegirCategoria("Fisica");
-                k.introduirResposta("c",true);
-                k.introduirResposta("d",false);
+                k.introduirResposta("9,81 m/s²",true);
+                k.introduirResposta("5,21 m/s²",false);
                 k.fiIntroduirPregunta();
 
-                k.introduirPregunta(2,"A","A",1);
+                k.introduirPregunta(2,"Restes","5-4",1);
                 k.afegirCategoria("Mates");
-                k.introduirResposta("e",false);
-                k.introduirResposta("f",true);
+                k.introduirResposta("2",false);
+                k.introduirResposta("1",true);
                 k.fiIntroduirPregunta();
 
-                k.introduirPregunta(3,"A","A",1);
+                k.introduirPregunta(3,"Accents","el accent de la vocal a es:",1);
                 k.afegirCategoria("Catala");
-                k.introduirResposta("g",true);
-                k.introduirResposta("h",false);
+                k.introduirResposta("obert",true);
+                k.introduirResposta("tancat",false);
                 k.fiIntroduirPregunta();
 
-                k.introduirPregunta(4,"A","A",2);
+                k.introduirPregunta(4,"Omplir el text","Ell es .... Pere",2);
                 k.afegirCategoria("Catala");
-                k.introduirResposta("i",true);
-                k.introduirResposta("j",false);
+                k.introduirResposta("en",true);
+                k.introduirResposta("la",false);
                 k.fiIntroduirPregunta();
 
                 //PROFESSORS
