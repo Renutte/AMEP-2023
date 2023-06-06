@@ -35,9 +35,13 @@ public class Main {
                 // AT
                 Boolean realizado = false;
                 while(!realizado) {
-                    AvaluarseTest av = AvaluarseTest();
-                    k.avaluarseTest(Integer.parseInt(av.inputIdTest.getText()), Integer.parseInt(av.inputIdEstudiant.getText()));
-                    realizado = true;
+                    try{
+                        AvaluarseTest av = AvaluarseTest();
+                        k.avaluarseTest(Integer.parseInt(av.inputIdTest.getText()), Integer.parseInt(av.inputIdEstudiant.getText()));
+                        realizado = true;
+                    }catch (Exception e) {
+                        MessageBox("No s'ha pogut avaluar el test");
+                    }
                 }
                 // PR
                 String ac_buttonPressed = "buttonConfirm";
@@ -68,9 +72,13 @@ public class Main {
                 // DPT
                 Boolean realizado = false;
                 while(!realizado) {
-                    DonarPermisTest cpt = DonarPermisTest();
-                    k.donarPermisTest(Integer.parseInt(cpt.inputIdText.getText()), Integer.parseInt(cpt.inputIdProfessor.getText()));
-                    realizado = true;
+                    try{
+                        DonarPermisTest cpt = DonarPermisTest();
+                        k.donarPermisTest(Integer.parseInt(cpt.inputIdText.getText()), Integer.parseInt(cpt.inputIdProfessor.getText()));
+                        realizado = true;
+                    }catch (Exception e) {
+                        MessageBox("No s'ha pogut donar permis");
+                    }
                 }
                 // AGOE
                 String agoe_buttonPressed = "";
@@ -152,7 +160,7 @@ public class Main {
                 try{
                     k.fiConstruirTest();
                 }catch (Exception e) {
-                    MessageBox("No s'ha crear el test");
+                    MessageBox("No s'ha pogut crear el test");
                 }
             }
 
@@ -169,7 +177,7 @@ public class Main {
                         k.introduirPregunta(idPregunta, descripcio, text_pregunta, idNivell);
                         realizado = true;
                     }catch (Exception e){
-                        MessageBox("No s'ha pogut crear la pregunta");
+                        MessageBox("No s'ha pogut intoduir la pregunta");
                     }
                 }
                 // AC
@@ -211,7 +219,7 @@ public class Main {
                 try{
                     k.fiIntroduirPregunta();
                 }catch (Exception e) {
-                    MessageBox("No s'ha crear la pregunta");
+                    MessageBox("No s'ha introduir la pregunta");
                 }
             }
 
@@ -223,8 +231,6 @@ public class Main {
 
             private void MostrarDades(){
                 ConsultarDades ConsultarDades = ConsultarDades();
-
-
             }
 
             private void afegirDadesPerTestejar(){
