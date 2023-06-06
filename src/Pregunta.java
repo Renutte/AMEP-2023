@@ -10,7 +10,6 @@ public class Pregunta {
     private int aparicions;
     private List<Resposta> listResposta;
     private List<Categoria> listCategoria;
-
     private Resposta respostaActiva;
 
     public Pregunta(int idPregunta, String descripcio, String textPregunta) {
@@ -38,9 +37,7 @@ public class Pregunta {
         else{
              r = null;
         }
-
         avaluacio.propostaResposta(pregunta, r);
-
     }
 
     public void augmentarAparicions(){
@@ -48,13 +45,15 @@ public class Pregunta {
     }
 
     public void createResposta(String text_resposta, Boolean correcta){
-        Resposta resposta;
-        if (respostaActiva == null) resposta = new Resposta(text_resposta, correcta, 0,this);
-        else resposta = new Resposta(text_resposta, correcta, respostaActiva.getOrdinal()+1,this);
-        respostaActiva = resposta;
-        this.listResposta.add(resposta);
-    }
 
+        if( (correcta == true && !findRespostaCorrecta()) || correcta == false){
+            Resposta resposta;
+            if (respostaActiva == null) resposta = new Resposta(text_resposta, correcta, 0,this);
+            else resposta = new Resposta(text_resposta, correcta, respostaActiva.getOrdinal()+1,this);
+            respostaActiva = resposta;
+            this.listResposta.add(resposta);
+        }
+    }
     public void fiIntroduirPregunta(){
         respostaActiva = null;
     }
@@ -69,6 +68,13 @@ public class Pregunta {
         }
         System.out.println("No s'ha trobat la Resposta");
         return null;
+    }
+
+    public Boolean findRespostaCorrecta(){
+        for (Resposta r : listResposta) {
+            if (r.getCorrecta() == true) return true;
+        }
+        return false;
     }
 
 

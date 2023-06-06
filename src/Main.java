@@ -157,7 +157,6 @@ public class Main {
                         }
                     }
                 }
-
                 // FIP
                 k.fiIntroduirPregunta();
 
@@ -252,9 +251,18 @@ public class Main {
                 g3.addEstudiant(e1);
 
                 //TESTS
+
+                //No Historic
                 k.construirTest(0,0 );
                 k.afegirPregunta(0);
                 k.afegirPregunta(1);
+                k.fiConstruirTest();
+
+                //Historic
+                k.construirTest(1,1 );
+                k.afegirPregunta(2);
+                k.afegirPregunta(3);
+                k.afegirPregunta(4);
                 k.fiConstruirTest();
 
                 //PERMISOS AL TEST
@@ -264,8 +272,15 @@ public class Main {
                 k.afegirEstudiant(1);
 
                 //HISTORIALS
-
-
+                e1.createHistorial(n1);
+                e1.createHistorial(n2);
+                e1.createHistorial(n3);
+                e2.createHistorial(n1);
+                e2.createHistorial(n2);
+                e2.createHistorial(n3);
+                e3.createHistorial(n1);
+                e3.createHistorial(n2);
+                e3.createHistorial(n3);
             }
 
             // ===============================================

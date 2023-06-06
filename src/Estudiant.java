@@ -9,7 +9,6 @@ public class Estudiant {
     private List<Test> listTest;
     Test testActiu;
     Historial historialActiu;
-
     Avaluacio avaluacioActiva;
 
     public Estudiant() {
@@ -91,6 +90,11 @@ public class Estudiant {
         }
         System.out.println("No s'ha trobat el historial");
         return null;
+    }
+
+    public void createHistorial(NivellEducatiu nivellEducatiu){
+        Historial historial = new Historial(nivellEducatiu);
+        this.listHistorial.add(historial);
     }
 
 

@@ -27,6 +27,10 @@ public class Resposta {
         return this.ordinal;
     }
 
+    public Boolean getCorrecta(){
+        return this.correcta;
+    }
+
 
 
 
