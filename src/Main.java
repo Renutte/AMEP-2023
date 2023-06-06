@@ -118,12 +118,16 @@ public class Main {
 
             private void CU_IntroduirPregunta(){
                 // IP
-                IntroduirPregunta ip = IntroduirPregunta();
-                int idPregunta = Integer.parseInt(ip.inputIdPregunta.getText());
-                String descripcio = ip.inputDescripcio.getText();
-                String text_pregunta = ip.inputText_pregunta.getText();
-                int idNivell = Integer.parseInt(ip.inputIdNivell.getText());
-                k.introduirPregunta(idPregunta, descripcio, text_pregunta, idNivell);
+                try{
+                    IntroduirPregunta ip = IntroduirPregunta();
+                    int idPregunta = Integer.parseInt(ip.inputIdPregunta.getText());
+                    String descripcio = ip.inputDescripcio.getText();
+                    String text_pregunta = ip.inputText_pregunta.getText();
+                    int idNivell = Integer.parseInt(ip.inputIdNivell.getText());
+                    k.introduirPregunta(idPregunta, descripcio, text_pregunta, idNivell);
+                }catch (Exception e){
+                    MessageBox("Hola");
+                }
 
                 // AC
                 String ac_buttonPressed = "buttonConfirm";
@@ -262,7 +266,6 @@ public class Main {
                 k.construirTest(1,1 );
                 k.afegirPregunta(2);
                 k.afegirPregunta(3);
-                k.afegirPregunta(4);
                 k.fiConstruirTest();
 
                 //PERMISOS AL TEST
@@ -362,6 +365,12 @@ public class Main {
                 frame.setSize(500, 500);
                 frame.setVisible(true);
                 return frame.getButtonPressed();
+            }
+
+            public void MessageBox(String msgText){
+                MessageBox frame = new MessageBox(msgText);
+                frame.setSize(500, 500);
+                frame.setVisible(true);
             }
 
         });
