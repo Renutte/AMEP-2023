@@ -1,0 +1,8 @@
+<component name="ArtifactManager">
+  <artifact type="jar" name="PrecsIPreguntes:jar">
+    <output-path>$PROJECT_DIR$/out/artifacts/PrecsIPreguntes_jar</output-path>
+    <root id="archive" name="PrecsIPreguntes.jar">
+      <element id="module-output" name="PrecsIPreguntes" />
+    </root>
+  </artifact>
+</component>
