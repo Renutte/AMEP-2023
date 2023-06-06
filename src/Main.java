@@ -165,7 +165,7 @@ public class Main {
                             } else if (introduidaCorrecta == false) ir_buttonPressed = "buttonConfirm";
                         } else throw new Exception("Duplicitat de resposta correcta");
                     }catch (Exception e) {
-                        MessageBox("No s'ha pogut introduir la resposta \n (ja existeix una correcta)");
+                        MessageBox("No s'ha pogut introduir la resposta");
                     }
                 }
 
