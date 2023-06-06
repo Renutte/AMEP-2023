@@ -2,23 +2,22 @@ import javax.swing.*;
 import java.util.ArrayList;
 import java.util.List;
 
-// Press Shift twice to open the Search Everywhere dialog and type `show whitespaces`,
-// then press Enter. You can now see whitespace characters in your code.
 public class Main {
     public static K k;
     public static void main(String[] args) {
         SwingUtilities.invokeLater(new Runnable() {
+
+            // ===============================================
+            // ====================== Main ===================
+            // ===============================================
             @Override
             public void run() {
                 k = new K();
                 k.feedLists();
-                construirTest();
-
+                afegirDadesPerTestejar();
                 while(true){
                     k.PrintInfo();
-
                     String buttonPressed = MainWindow();
-
                     if (buttonPressed == "buttonIntroduirPregunta") CU_IntroduirPregunta();
                     if (buttonPressed == "buttonConstruirTest") CU_ConstruirTest();
                     if (buttonPressed == "buttonDonarPermisTest") CU_DonarPermisTest();
@@ -27,6 +26,11 @@ public class Main {
                 }
 
             }
+
+
+            // ===============================================
+            // ================= Casos d'us ==================
+            // ===============================================
 
             private void CU_AvaluarseTest(){
                 // AT
@@ -49,7 +53,6 @@ public class Main {
 
             private void CU_NouCurs(){
                 k.nouCurs();
-
             }
 
             private void CU_DonarPermisTest(){
@@ -90,10 +93,8 @@ public class Main {
             private void CU_ConstruirTest(){
                 // CT
                 ConstruirTest ct = ConstruirTest();
-                // Es null?
                 Professor pro = k.findProfessor(Integer.parseInt(ct.inputIdProfessor.getText()));
                 NivellEducatiu n = k.findNivellEducatiu(Integer.parseInt(ct.inputIdNivell.getText()));
-                //
                 k.construirTest(Integer.parseInt(ct.inputIdNivell.getText()), Integer.parseInt(ct.inputIdProfessor.getText()));
 
                 // AP
@@ -110,12 +111,65 @@ public class Main {
                         }
                     }
                 }
+
                 // FCT
                 k.fiConstruirTest();
             }
 
-            private void construirTest(){
+            private void CU_IntroduirPregunta(){
+                // IP
+                IntroduirPregunta ip = IntroduirPregunta();
+                int idPregunta = Integer.parseInt(ip.inputIdPregunta.getText());
+                String descripcio = ip.inputDescripcio.getText();
+                String text_pregunta = ip.inputText_pregunta.getText();
+                int idNivell = Integer.parseInt(ip.inputIdNivell.getText());
+                k.introduirPregunta(idPregunta, descripcio, text_pregunta, idNivell);
 
+                // AC
+                String ac_buttonPressed = "buttonConfirm";
+                boolean introduidaUna = false;
+                while (ac_buttonPressed == "buttonConfirm" || introduidaUna == false){
+                    afegirCategoria ac = AfegirCategoria();
+                    ac_buttonPressed = ac.buttonPressed;
+                    String nom_categoria = ac.inputNomCategoria.getText();
+                    if (ac_buttonPressed == "buttonConfirm" && !nom_categoria.equals("") && k.findCategoria(nom_categoria) != null){
+                        k.afegirCategoria(nom_categoria);
+                        introduidaUna = true;
+                    }
+                }
+
+                // IR
+                String ir_buttonPressed = "buttonConfirm";
+                boolean introduidaCorrecta = false;
+                while (ir_buttonPressed == "buttonConfirm"){
+                    IntroduirResposta ir = IntroduirResposta();
+                    ir_buttonPressed = ir.buttonPressed;
+                    // No permet introduir mes d'una correcta
+                    if (!(introduidaCorrecta == true && ir.inputCorrecta.isSelected())){
+                        if (ir_buttonPressed == "buttonConfirm"){
+                            k.introduirResposta(ir.inputText_Resposta.getText(), ir.inputCorrecta.isSelected());
+                            introduidaCorrecta = true;
+                        }else{
+                            if (introduidaCorrecta == false) ir_buttonPressed = "buttonConfirm";
+                        }
+                        if (ir.inputCorrecta.isSelected()) {
+                            introduidaCorrecta = true;
+                        }
+                    }
+                }
+
+                // FIP
+                k.fiIntroduirPregunta();
+
+            }
+
+
+
+            // ===============================================
+            // ==== Funcions per testejar el funcionament ====
+            // ===============================================
+
+            private void afegirDadesPerTestejar(){
 
                 // CATEGORIES
                 Categoria c1 = new Categoria("Mates");
@@ -141,6 +195,7 @@ public class Main {
                 k.introduirResposta("a",true);
                 k.introduirResposta("b",false);
                 k.fiIntroduirPregunta();
+
                 k.introduirPregunta(1,"A","A",0);
                 k.afegirCategoria("Fisica");
                 k.introduirResposta("c",true);
@@ -152,6 +207,7 @@ public class Main {
                 k.introduirResposta("e",false);
                 k.introduirResposta("f",true);
                 k.fiIntroduirPregunta();
+
                 k.introduirPregunta(3,"A","A",1);
                 k.afegirCategoria("Catala");
                 k.introduirResposta("g",true);
@@ -207,53 +263,14 @@ public class Main {
                 k.afegirEstudiant(0);
                 k.afegirEstudiant(1);
 
-            }
+                //HISTORIALS
 
-            private void CU_IntroduirPregunta(){
-                // IP
-                IntroduirPregunta ip = IntroduirPregunta();
-                int idPregunta = Integer.parseInt(ip.inputIdPregunta.getText());
-                String descripcio = ip.inputDescripcio.getText();
-                String text_pregunta = ip.inputText_pregunta.getText();
-                int idNivell = Integer.parseInt(ip.inputIdNivell.getText());
-                k.introduirPregunta(idPregunta, descripcio, text_pregunta, idNivell);
-                // AC
-                String ac_buttonPressed = "buttonConfirm";
-                boolean introduidaUna = false;
-                while (ac_buttonPressed == "buttonConfirm" || introduidaUna == false){
-                    afegirCategoria ac = AfegirCategoria();
-                    ac_buttonPressed = ac.buttonPressed;
-                    String nom_categoria = ac.inputNomCategoria.getText();
-                    if (ac_buttonPressed == "buttonConfirm" && !nom_categoria.equals("") && k.findCategoria(nom_categoria) != null){
-                        k.afegirCategoria(nom_categoria);
-                        introduidaUna = true;
-                    }
-                }
-                // IR
-                String ir_buttonPressed = "buttonConfirm";
-                boolean introduidaCorrecta = false;
-                while (ir_buttonPressed == "buttonConfirm"){
-                    IntroduirResposta ir = IntroduirResposta();
-                    ir_buttonPressed = ir.buttonPressed;
-                    // No permet introduir mes d'una correcta
-                    if (!(introduidaCorrecta == true && ir.inputCorrecta.isSelected())){
-                        if (ir_buttonPressed == "buttonConfirm"){
-                            k.introduirResposta(ir.inputText_Resposta.getText(), ir.inputCorrecta.isSelected());
-                            introduidaCorrecta = true;
-                        }else{
-                            if (introduidaCorrecta == false) ir_buttonPressed = "buttonConfirm";
-                        }
-                        if (ir.inputCorrecta.isSelected()) {
-                            introduidaCorrecta = true;
-                        }
-                    }
-                }
-                // FIP
-                k.fiIntroduirPregunta();
 
             }
 
-
+            // ===============================================
+            // ================== Finestres ==================
+            // ===============================================
 
             public PropostaResposta PropostaResposta(){
                 PropostaResposta frame = new PropostaResposta();
