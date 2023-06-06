@@ -118,20 +118,42 @@ public class Main {
 
             private void CU_IntroduirPregunta(){
                 // IP
-                try{
-                    IntroduirPregunta ip = IntroduirPregunta();
-                    int idPregunta = Integer.parseInt(ip.inputIdPregunta.getText());
-                    String descripcio = ip.inputDescripcio.getText();
-                    String text_pregunta = ip.inputText_pregunta.getText();
-                    int idNivell = Integer.parseInt(ip.inputIdNivell.getText());
-                    k.introduirPregunta(idPregunta, descripcio, text_pregunta, idNivell);
-                }catch (Exception e){
-                    MessageBox("Hola");
+                Boolean realizado = false;
+                while(!realizado){
+                    try{
+                        IntroduirPregunta ip = IntroduirPregunta();
+                        int idPregunta = Integer.parseInt(ip.inputIdPregunta.getText());
+                        String descripcio = ip.inputDescripcio.getText();
+                        String text_pregunta = ip.inputText_pregunta.getText();
+                        int idNivell = Integer.parseInt(ip.inputIdNivell.getText());
+                        k.introduirPregunta(idPregunta, descripcio, text_pregunta, idNivell);
+                        realizado = true;
+                    }catch (Exception e){
+                        MessageBox("No s'ha pogut crear la pregunta");
+                    }
+                }
+                // AC
+                boolean introduidaUna = false;
+                String ac_buttonPressed = "buttonConfirm";
+                while (ac_buttonPressed == "buttonConfirm" || introduidaUna == false){
+                    try{
+                        //while (ac_buttonPressed == "buttonConfirm" || introduidaUna == false){
+                            afegirCategoria ac = AfegirCategoria();
+                            ac_buttonPressed = ac.buttonPressed;
+                            String nom_categoria = ac.inputNomCategoria.getText();
+                            if (ac_buttonPressed == "buttonConfirm" && !nom_categoria.equals("")){
+                                if(k.findCategoria(nom_categoria) == null) throw new Exception("Categoria Null");
+                                k.afegirCategoria(nom_categoria);
+                                introduidaUna = true;
+                            }
+                        //}
+                    }catch (Exception e){
+                        MessageBox("No s'ha pogut afegir la categoria");
+                    }
                 }
 
-                // AC
-                String ac_buttonPressed = "buttonConfirm";
-                boolean introduidaUna = false;
+                ac_buttonPressed = "buttonConfirm";
+                introduidaUna = false;
                 while (ac_buttonPressed == "buttonConfirm" || introduidaUna == false){
                     afegirCategoria ac = AfegirCategoria();
                     ac_buttonPressed = ac.buttonPressed;
