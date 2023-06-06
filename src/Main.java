@@ -153,22 +153,17 @@ public class Main {
                 // IR
                 boolean introduidaCorrecta = false;
                 String ir_buttonPressed = "buttonConfirm";
-                while (ir_buttonPressed == "buttonConfirm"){
+                while (ir_buttonPressed == "buttonConfirm" || introduidaCorrecta == false){
                     try{
                         IntroduirResposta ir = IntroduirResposta();
                         ir_buttonPressed = ir.buttonPressed;
                         // No permet introduir mes d'una correctaº
                         if (!(introduidaCorrecta == true && ir.inputCorrecta.isSelected())){
-                            if (ir_buttonPressed == "buttonConfirm"){
+                            if (ir_buttonPressed == "buttonConfirm") {
                                 k.introduirResposta(ir.inputText_Resposta.getText(), ir.inputCorrecta.isSelected());
-                                introduidaCorrecta = true;
-                            }else{
-                                if (introduidaCorrecta == false) ir_buttonPressed = "buttonConfirm";
-                            }
-                            if (ir.inputCorrecta.isSelected()) {
-                                introduidaCorrecta = true;
-                            }
-                        }  else throw new Exception("Duplicitat de resposta correcta");
+                                if (ir.inputCorrecta.isSelected()) introduidaCorrecta = true;
+                            } else if (introduidaCorrecta == false) ir_buttonPressed = "buttonConfirm";
+                        } else throw new Exception("Duplicitat de resposta correcta");
                     }catch (Exception e) {
                         MessageBox("No s'ha pogut introduir la resposta \n (ja existeix una correcta)");
                     }
