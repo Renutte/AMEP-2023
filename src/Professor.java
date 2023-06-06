@@ -54,8 +54,10 @@ public class Professor {
     }
 
     public void PrintInfo(){
-        System.out.println(" === INFO Professor === ");
-        System.out.println(this.id);
-        for (Test aux : this.listTest) aux.PrintInfo();
+        System.out.println(" - Professor ID: " + this.id);
+        for (Test aux : this.listTest) {
+            System.out.println("\n - Professor " + "[" + this.id + "]" + " LLISTA TEST: ");
+            aux.PrintInfo();
+        }
     }
 }

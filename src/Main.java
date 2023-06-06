@@ -13,16 +13,15 @@ public class Main {
             @Override
             public void run() {
                 k = new K();
-                k.feedLists();
                 afegirDadesPerTestejar();
                 while(true){
-                    k.PrintInfo();
                     String buttonPressed = MainWindow();
                     if (buttonPressed == "buttonIntroduirPregunta") CU_IntroduirPregunta();
                     if (buttonPressed == "buttonConstruirTest") CU_ConstruirTest();
                     if (buttonPressed == "buttonDonarPermisTest") CU_DonarPermisTest();
                     if (buttonPressed == "buttonAvaluarseTest") CU_AvaluarseTest();
                     if (buttonPressed == "buttonNouCurs") CU_NouCurs();
+                    if (buttonPressed == "consultarDadesButton") MostrarDades();
                 }
 
             }
@@ -34,9 +33,12 @@ public class Main {
 
             private void CU_AvaluarseTest(){
                 // AT
-                AvaluarseTest av = AvaluarseTest();
-                k.avaluarseTest(Integer.parseInt(av.inputIdTest.getText()), Integer.parseInt(av.inputIdEstudiant.getText()));
-
+                Boolean realizado = false;
+                while(!realizado) {
+                    AvaluarseTest av = AvaluarseTest();
+                    k.avaluarseTest(Integer.parseInt(av.inputIdTest.getText()), Integer.parseInt(av.inputIdEstudiant.getText()));
+                    realizado = true;
+                }
                 // PR
                 String ac_buttonPressed = "buttonConfirm";
                 while (ac_buttonPressed == "buttonConfirm"){
@@ -46,74 +48,112 @@ public class Main {
                         k.propostaResposta(Integer.parseInt(pr.inputIdPregunta.getText()), Integer.parseInt(pr.inputOrdinal.getText()));
                     }
                 }
-
                 // FAT
-                k.fiAvaluarseTest();
+                try{
+                    k.fiAvaluarseTest();
+                }catch (Exception e) {
+                    MessageBox("No s'ha pogut avaluar el test");
+                }
             }
 
             private void CU_NouCurs(){
-                k.nouCurs();
+                try{
+                    k.nouCurs();
+                }catch (Exception e) {
+                    MessageBox("No s'ha pogut iniciar un nou curs");
+                }
             }
 
             private void CU_DonarPermisTest(){
                 // DPT
-                DonarPermisTest cpt = DonarPermisTest();
-                k.donarPermisTest(Integer.parseInt(cpt.inputIdText.getText()), Integer.parseInt(cpt.inputIdProfessor.getText()));
-
-                // AG
-                String ac_buttonPressed = "buttonConfirm";
-                while (ac_buttonPressed == "buttonConfirm"){
-                    AfegirGrup ag = AfegirGrup();
-                    ac_buttonPressed = ag.buttonPressed;
-                    if (ac_buttonPressed == "buttonConfirm" && !ag.inputIdGrup.getText().equals("")){
-                        int idGrup = Integer.parseInt(ag.inputIdGrup.getText());
-                        if (k.findGrup(idGrup) != null){
-                            k.afegirGrup(idGrup);
+                Boolean realizado = false;
+                while(!realizado) {
+                    DonarPermisTest cpt = DonarPermisTest();
+                    k.donarPermisTest(Integer.parseInt(cpt.inputIdText.getText()), Integer.parseInt(cpt.inputIdProfessor.getText()));
+                    realizado = true;
+                }
+                // AGOE
+                String agoe_buttonPressed = "";
+                while (agoe_buttonPressed != "confirmarButton") {
+                    AfegirGrupOEstudiant afegirGrupOEstudiant = AfegirGrupOEstudiant();
+                    agoe_buttonPressed = afegirGrupOEstudiant.buttonPressed;
+                    if (agoe_buttonPressed == "afegirGrupButton"){
+                        // AG
+                        String ac_buttonPressed = "buttonConfirm";
+                        while (ac_buttonPressed == "buttonConfirm") {
+                            AfegirGrup ag = AfegirGrup();
+                            ac_buttonPressed = ag.buttonPressed;
+                            if (ac_buttonPressed == "buttonConfirm" && !ag.inputIdGrup.getText().equals("")) {
+                                int idGrup = Integer.parseInt(ag.inputIdGrup.getText());
+                                if (k.findGrup(idGrup) != null) {
+                                    k.afegirGrup(idGrup);
+                                }
+                            }
                         }
                     }
-                }
-
-                // AE
-                ac_buttonPressed = "buttonConfirm";
-                while (ac_buttonPressed == "buttonConfirm"){
-                    AfegirEstudiant ae = AfegirEstudiant();
-                    ac_buttonPressed = ae.buttonPressed;
-                    if (ac_buttonPressed == "buttonConfirm" && !ae.inputIdEstudiant.getText().equals("")){
-                        int idEstudiant = Integer.parseInt(ae.inputIdEstudiant.getText());
-                        if (k.findEstudiant(idEstudiant) != null){
-                            k.afegirEstudiant(idEstudiant);
+                    if (agoe_buttonPressed == "afegirEstudiantButton"){
+                        // AE
+                        String ac_buttonPressed = "buttonConfirm";
+                        ac_buttonPressed = "buttonConfirm";
+                        while (ac_buttonPressed == "buttonConfirm"){
+                            AfegirEstudiant ae = AfegirEstudiant();
+                            ac_buttonPressed = ae.buttonPressed;
+                            if (ac_buttonPressed == "buttonConfirm" && !ae.inputIdEstudiant.getText().equals("")){
+                                int idEstudiant = Integer.parseInt(ae.inputIdEstudiant.getText());
+                                if (k.findEstudiant(idEstudiant) != null){
+                                    k.afegirEstudiant(idEstudiant);
+                                }
+                            }
                         }
                     }
                 }
 
                 // FDPT
-                k.fidonarPermisTest();
+                try{
+                    k.fidonarPermisTest();
+                }catch (Exception e) {
+                    MessageBox("No s'ha pogut crear els permissos");
+                }
             }
 
             private void CU_ConstruirTest(){
                 // CT
-                ConstruirTest ct = ConstruirTest();
-                Professor pro = k.findProfessor(Integer.parseInt(ct.inputIdProfessor.getText()));
-                NivellEducatiu n = k.findNivellEducatiu(Integer.parseInt(ct.inputIdNivell.getText()));
-                k.construirTest(Integer.parseInt(ct.inputIdNivell.getText()), Integer.parseInt(ct.inputIdProfessor.getText()));
-
+                Boolean realizado = false;
+                while(!realizado) {
+                    try {
+                        ConstruirTest ct = ConstruirTest();
+                        Professor pro = k.findProfessor(Integer.parseInt(ct.inputIdProfessor.getText()));
+                        NivellEducatiu n = k.findNivellEducatiu(Integer.parseInt(ct.inputIdNivell.getText()));
+                        k.construirTest(Integer.parseInt(ct.inputIdNivell.getText()), Integer.parseInt(ct.inputIdProfessor.getText()));
+                        realizado = true;
+                    } catch (Exception e) {
+                        MessageBox("No s'ha pogut construir el test");
+                    }
+                }
                 // AP
                 String ac_buttonPressed = "buttonConfirm";
                 boolean introduidaUna = false;
-                while (ac_buttonPressed == "buttonConfirm" || introduidaUna == false){
-                    AfegirPregunta ap = AfegirPregunta();
-                    ac_buttonPressed = ap.buttonPressed;
-                    if (ac_buttonPressed == "buttonConfirm" && !ap.inputIdPregunta.getText().equals("")){
-                        int idPregunta = Integer.parseInt(ap.inputIdPregunta.getText());
-                        if (k.nivellEducatiuActiu.findPregunta(idPregunta) != null){
-                            k.afegirPregunta(idPregunta);
-                            introduidaUna = true;
+                try{
+                    while (ac_buttonPressed == "buttonConfirm" || introduidaUna == false){
+                        AfegirPregunta ap = AfegirPregunta();
+                        ac_buttonPressed = ap.buttonPressed;
+                        if (ac_buttonPressed == "buttonConfirm" && !ap.inputIdPregunta.getText().equals("")){
+                            int idPregunta = Integer.parseInt(ap.inputIdPregunta.getText());
+                            if (k.nivellEducatiuActiu.findPregunta(idPregunta) != null){
+                                k.afegirPregunta(idPregunta);
+                                introduidaUna = true;
+                            }
                         }
                     }
+                }catch (Exception e) {
+                    MessageBox("No s'ha pogut afegir la pregunta");
                 }
-
                 // FCT
-                k.fiConstruirTest();
+                try{
+                    k.fiConstruirTest();
+                }catch (Exception e) {
+                    MessageBox("No s'ha crear el test");
+                }
             }
 
             private void CU_IntroduirPregunta(){
@@ -149,7 +189,6 @@ public class Main {
                         MessageBox("No s'ha pogut afegir la categoria");
                     }
                 }
-
                 // IR
                 boolean introduidaCorrecta = false;
                 String ir_buttonPressed = "buttonConfirm";
@@ -168,10 +207,12 @@ public class Main {
                         MessageBox("No s'ha pogut introduir la resposta");
                     }
                 }
-
                 // FIP
-                k.fiIntroduirPregunta();
-
+                try{
+                    k.fiIntroduirPregunta();
+                }catch (Exception e) {
+                    MessageBox("No s'ha crear la pregunta");
+                }
             }
 
 
@@ -179,6 +220,12 @@ public class Main {
             // ===============================================
             // ==== Funcions per testejar el funcionament ====
             // ===============================================
+
+            private void MostrarDades(){
+                ConsultarDades ConsultarDades = ConsultarDades();
+
+
+            }
 
             private void afegirDadesPerTestejar(){
 
@@ -297,6 +344,20 @@ public class Main {
             // ===============================================
             // ================== Finestres ==================
             // ===============================================
+
+            public ConsultarDades ConsultarDades(){
+                ConsultarDades frame = new ConsultarDades(k);
+                frame.setSize(500, 500);
+                frame.setVisible(true);
+                return frame;
+            }
+
+            public AfegirGrupOEstudiant AfegirGrupOEstudiant(){
+                AfegirGrupOEstudiant frame = new AfegirGrupOEstudiant();
+                frame.setSize(500, 500);
+                frame.setVisible(true);
+                return frame;
+            }
 
             public PropostaResposta PropostaResposta(){
                 PropostaResposta frame = new PropostaResposta();

@@ -61,9 +61,14 @@ public class NivellEducatiu {
 
 
     public void PrintInfo(){
-        System.out.println(" === INFO NivellEducatiu === ");
-        System.out.println(this.id);
-        for (Pregunta aux : this.listPregunta) aux.PrintInfo();
-        for (Test aux : this.listTest) aux.PrintInfo();
+        System.out.println(" - NivellEducatiu ID: " + this.id);
+        for (Pregunta aux : this.listPregunta) {
+            System.out.println("\n - NivellEducatiu "+ "[" + this.id + "]" +" LLISTA PREGUNTA: ");
+            aux.PrintInfo();
+        }
+        for (Test aux : this.listTest) {
+            System.out.println("\n - NivellEducatiu "+ "[" + this.id + "]" +" LLISTA TEST: ");
+            aux.PrintInfo();
+        }
     }
 }

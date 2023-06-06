@@ -13,7 +13,6 @@ public class Categoria {
     }
 
     public void PrintInfo(){
-        System.out.println(" === INFO Categoria === ");
-        System.out.println(this.nom_categoria);
+        System.out.println(" - Categoria ID: " + this.nom_categoria);
     }
 }

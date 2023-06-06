@@ -58,14 +58,14 @@ public class Avaluacio {
     }
 
     public void PrintInfo(){
-        System.out.println(" === INFO Avaluacio === ");
-        System.out.println(this.id);
-        System.out.println(this.nota);
-        System.out.println(this.respostesCorrectes);
-        System.out.println(this.respostesIncorrectes);
-        System.out.println(this.respostesEnBlanc);
+        System.out.println(" - Avaluacio ID: " + this.id);
+        System.out.println(" - Avaluacio NOTA: " + this.nota);
+        System.out.println(" - Avaluacio RESPOSTES CORRECTES: " + this.respostesCorrectes);
+        System.out.println(" - Avaluacio RESPOSTES INCORRECTES: " + this.respostesIncorrectes);
+        System.out.println(" - Avaluacio RESPOSTES EN BLANC: " + this.respostesEnBlanc);
         //this.test.PrintInfo();
         for (Proposta aux : this.listProposta) {
+            System.out.println("\n - Avaluacio "+ "[" + this.id + "]" +" LLISTA DE PROPOSTES: ");
             aux.PrintInfo();
         }
     }

@@ -3,32 +3,38 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-public class IntroduirResposta extends JDialog {
+public class AfegirGrupOEstudiant extends JDialog {
     private JPanel panel1;
-    public JTextField inputText_Resposta;
-    public JCheckBox inputCorrecta;
-    private JButton buttonConfirm;
-    private JButton buttonCancel;
-    private JLabel Title;
+    private JButton afegirGrupButton;
+    private JButton afegirEstudiantButton;
+    private JButton confirmarButton;
     public String buttonPressed = "";
-public IntroduirResposta() {
+
+public AfegirGrupOEstudiant() {
     setModal(true);
     setContentPane(panel1);
     Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
     int posX = (screenSize.width - getWidth()) / 2 - 250;
     int posY = (screenSize.height - getHeight()) / 2 - 250;
     setLocation(posX, posY);
-    buttonConfirm.addActionListener(new ActionListener() {
+    afegirGrupButton.addActionListener(new ActionListener() {
         @Override
         public void actionPerformed(ActionEvent e) {
-            buttonPressed = "buttonConfirm";
+            buttonPressed = "afegirGrupButton";
             dispose();
         }
     });
-    buttonCancel.addActionListener(new ActionListener() {
+    afegirEstudiantButton.addActionListener(new ActionListener() {
         @Override
         public void actionPerformed(ActionEvent e) {
-            buttonPressed = "buttonCancel";
+            buttonPressed = "afegirEstudiantButton";
+            dispose();
+        }
+    });
+    confirmarButton.addActionListener(new ActionListener() {
+        @Override
+        public void actionPerformed(ActionEvent e) {
+            buttonPressed = "confirmarButton";
             dispose();
         }
     });

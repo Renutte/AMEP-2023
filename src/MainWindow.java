@@ -1,4 +1,5 @@
 import javax.swing.*;
+import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
@@ -10,12 +11,20 @@ public class MainWindow extends JDialog {
     private JButton buttonDonarPermisTest;
     private JButton buttonAvaluarseTest;
     private JButton buttonNouCurs;
+    private JButton tencarButton;
+    private JButton consultarDadesButton;
 
-    private String buttonPressed = "";
+    public String buttonPressed = "";
 
     public MainWindow(){
         setContentPane(panel1);
         setModal(true);
+
+        Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
+        int posX = (screenSize.width - getWidth()) / 2 - 250;
+        int posY = (screenSize.height - getHeight()) / 2 - 250;
+        setLocation(posX, posY);
+
         buttonIntroduirPregunta.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -52,6 +61,20 @@ public class MainWindow extends JDialog {
             }
         });
 
+        tencarButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                System.exit(0);
+            }
+        });
+        consultarDadesButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                buttonPressed = "consultarDadesButton";
+                dispose();
+            }
+        });
+        //setUndecorated(true);
     }
 
     public String getButtonPressed(){

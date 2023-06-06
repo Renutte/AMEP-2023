@@ -35,12 +35,14 @@ public class Resposta {
 
 
     public void PrintInfo(){
-        System.out.println(" === INFO Resposta === ");
-        System.out.println(this.id);
-        System.out.println(this.text_resposta);
-        System.out.println(this.correcta);
-        System.out.println(this.ordinal);
+        System.out.println(" - Resposta ID: " + this.id);
+        System.out.println(" - Resposta TEXT: " + this.text_resposta);
+        System.out.println(" - Resposta CORRECTE?: " + this.correcta);
+        System.out.println(" - Resposta ORDINAL: " + this.ordinal);
         //this.pregunta.PrintInfo();
-        for (Proposta aux : this.listProposta) aux.PrintInfo();
+        for (Proposta aux : this.listProposta) {
+            System.out.println("\n - Resposta " + "[" + this.id + "]" + " LLISTA PROPOSTA: ");
+            aux.PrintInfo();
+        }
     }
 }

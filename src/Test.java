@@ -55,13 +55,15 @@ public class Test {
     }
 
     public void PrintInfo(){
-        System.out.println(" === INFO Test === ");
-        System.out.println(this.id);
-        System.out.println(this.resolucions);
-        System.out.println(this.historic);
+        System.out.println(" - Test ID: " + this.id);
+        System.out.println(" - Test RESOLUCIONS: " + this.resolucions);
+        System.out.println(" - Test HISTORIC: " + this.historic);
         //this.professor.PrintInfo();
         //this.nivellEducatiu.PrintInfo();
-        for (Pregunta aux : this.listPregunta) aux.PrintInfo();
+        for (Pregunta aux : this.listPregunta) {
+            System.out.println("\n - Test " + "[" + this.id + "]" + " LLISTA PREGUNTA: ");
+            aux.PrintInfo();
+        }
     }
     public int getId(){
         return this.id;

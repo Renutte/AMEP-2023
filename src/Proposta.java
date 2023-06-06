@@ -16,8 +16,7 @@ public class Proposta {
     }
 
     public void PrintInfo(){
-        System.out.println(" === INFO Proposta === ");
-        System.out.println(this.id);
+        System.out.println(" - Proposta ID: " + this.id);
         //this.resposta.PrintInfo();
         //this.pregunta.PrintInfo();
         //this.avaluacio.PrintInfo();

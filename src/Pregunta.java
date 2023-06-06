@@ -79,12 +79,17 @@ public class Pregunta {
 
 
     public void PrintInfo(){
-        System.out.println(" === INFO Pregunta === ");
-        System.out.println(this.id);
-        System.out.println(this.descripcio);
-        System.out.println(this.textPregunta);
-        System.out.println(this.aparicions);
-        for (Categoria aux : this.listCategoria) aux.PrintInfo();
-        for (Resposta aux : this.listResposta) aux.PrintInfo();
+        System.out.println(" - Pregunta ID: " + this.id);
+        System.out.println(" - Pregunta DESCRIPCIO: " + this.descripcio);
+        System.out.println(" - Pregunta TEXT PREGUNTA: " + this.textPregunta);
+        System.out.println(" - Pregunta APARICIONS: " + this.aparicions);
+        for (Categoria aux : this.listCategoria) {
+            System.out.println("\n - Pregunta "+ "[" + this.id + "]" +" LLISTA CATEGORIA: ");
+            aux.PrintInfo();
+        }
+        for (Resposta aux : this.listResposta) {
+            System.out.println("\n - Pregunta "+ "[" + this.id + "]" +" LLISTA RESPOSTA: ");
+            aux.PrintInfo();
+        }
     }
 }

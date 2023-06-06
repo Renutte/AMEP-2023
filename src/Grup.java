@@ -29,11 +29,13 @@ public class Grup {
     }
 
     public void PrintInfo(){
-        System.out.println(" === INFO Grup === ");
-        System.out.println(this.id);
-        System.out.println(this.curs);
-        System.out.println(this.classe);
-        for (Test aux : this.listTest) aux.PrintInfo();
+        System.out.println(" - Grup ID: " + this.id);
+        System.out.println(" - Grup CURS: " + this.curs);
+        System.out.println(" - Grup CLASSE: " + this.classe);
+        for (Test aux : this.listTest) {
+            System.out.println("\n - Grup "+ "[" + this.id + "]" +" LLISTA TEST: ");
+            aux.PrintInfo();
+        }
     }
     public int getId(){
         return this.id;

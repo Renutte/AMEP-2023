@@ -70,11 +70,19 @@ public class Estudiant {
 
 
     public void PrintInfo(){
-        System.out.println(" === INFO Estudiant === ");
-        System.out.println(this.id);
-        for (Historial aux : this.listHistorial) aux.PrintInfo();
-        for (Avaluacio aux : this.listAvaluacio) aux.PrintInfo();
-        for (Test aux : this.listTest) aux.PrintInfo();
+        System.out.println(" - Estudiant ID: " + this.id);
+        for (Historial aux : this.listHistorial) {
+            System.out.println("\n - Estudiant "+ "[" + this.id + "]" +" LLISTA HISTORIAL: ");
+            aux.PrintInfo();
+        }
+        for (Avaluacio aux : this.listAvaluacio) {
+            System.out.println("\n - Estudiant "+ "[" + this.id + "]" +" LLISTA AVALUACIO: ");
+            aux.PrintInfo();
+        }
+        for (Test aux : this.listTest) {
+            System.out.println("\n - Estudiant "+ "[" + this.id + "]" +" LLISTA TEST: ");
+            aux.PrintInfo();
+        }
     }
 
     public Test findTest(int idTest){

@@ -19,7 +19,7 @@ public class K {
         this.listCategoria = new ArrayList<>();
         this.listEstudiant = new ArrayList<>();
     }
-    public void feedLists() {
+/*    public void feedLists() {
 
         for (Categoria aux : listCategoria) {
             System.out.println("Categoria: " + aux.getId());
@@ -56,7 +56,7 @@ public class K {
             System.out.println("Grup: " + aux.getId());
         }
 
-    }
+    }*/
 
     // ========== Introduir Pregunta
     public void introduirPregunta(int idPregunta, String descripcio, String text_pregunta, int idNivell){
@@ -209,12 +209,17 @@ public class K {
         }
 
 
+    // Funció per a debug
     public void PrintInfo(){
-        System.out.println(" === INFO K === ");
+        System.out.println("\n << === INFO Categoria === >> ");
         for (Categoria aux : this.listCategoria) aux.PrintInfo();
+        System.out.println("\n << === INFO Estudiant === >> ");
         for (Estudiant aux : this.listEstudiant) aux.PrintInfo();
+        System.out.println("\n << === INFO Grup === >> ");
         for (Grup aux : this.listGrup) aux.PrintInfo();
+        System.out.println("\n << === INFO Professor === >> ");
         for (Professor aux : this.listProfessor) aux.PrintInfo();
+        System.out.println("\n << === INFO Nivell Educatiu === >> ");
         for (NivellEducatiu aux : this.listNivellEducatiu) aux.PrintInfo();
     }
 

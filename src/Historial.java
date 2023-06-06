@@ -34,11 +34,10 @@ public class Historial {
     }
 
     public void PrintInfo(){
-        System.out.println(" === INFO Historial === ");
-        System.out.println(this.id);
-        System.out.println(this.quantsHistorics);
-        System.out.println(this.quantsNoHistorics);
-        System.out.println(this.mitjana);
+        System.out.println(" - Historial ID: " + this.id);
+        System.out.println(" - Historial QUANTS HISTORIS: " + this.quantsHistorics);
+        System.out.println(" - Historial QUANTS NO HISTORICS: " + this.quantsNoHistorics);
+        System.out.println(" - Historial MITJANA: " + this.mitjana);
         //nivellEducatiu.PrintInfo();
     }
 }
