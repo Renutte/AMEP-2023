@@ -150,23 +150,28 @@ public class Main {
                     }
                 }
                 // IR
-                String ir_buttonPressed = "buttonConfirm";
                 boolean introduidaCorrecta = false;
-                while (ir_buttonPressed == "buttonConfirm"){
-                    IntroduirResposta ir = IntroduirResposta();
-                    ir_buttonPressed = ir.buttonPressed;
-                    // No permet introduir mes d'una correcta
-                    if (!(introduidaCorrecta == true && ir.inputCorrecta.isSelected())){
-                        if (ir_buttonPressed == "buttonConfirm"){
-                            k.introduirResposta(ir.inputText_Resposta.getText(), ir.inputCorrecta.isSelected());
-                            introduidaCorrecta = true;
-                        }else{
-                            if (introduidaCorrecta == false) ir_buttonPressed = "buttonConfirm";
+                String ir_buttonPressed = "buttonConfirm";
+                try{
+                    while (ir_buttonPressed == "buttonConfirm"){
+                        IntroduirResposta ir = IntroduirResposta();
+                        ir_buttonPressed = ir.buttonPressed;
+                        // No permet introduir mes d'una correcta
+                        if (!(introduidaCorrecta == true && ir.inputCorrecta.isSelected())){
+                            if (ir_buttonPressed == "buttonConfirm"){
+                                k.introduirResposta(ir.inputText_Resposta.getText(), ir.inputCorrecta.isSelected());
+                                introduidaCorrecta = true;
+                            }else{
+                                if (introduidaCorrecta == false) ir_buttonPressed = "buttonConfirm";
+                            }
+                            if (ir.inputCorrecta.isSelected()) {
+                                introduidaCorrecta = true;
+                            }
                         }
-                        if (ir.inputCorrecta.isSelected()) {
-                            introduidaCorrecta = true;
-                        }
+                        else throw new Exception("Duplicitat de resposta correcta");
                     }
+                }catch (Exception e) {
+                    MessageBox("No s'ha pogut introduir la resposta \n (ja existeix una correcta)");
                 }
                 // FIP
                 k.fiIntroduirPregunta();
